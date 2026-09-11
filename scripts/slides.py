@@ -6,7 +6,9 @@ Generic primitives so future episodes (any topic) can be authored as data
   - statement_slide(text)               -- big centered serif statement
   - chart_slide(headline, sub, points, mark)  -- line chart w/ one highlighted point
   - bars_slide(headline, labels, values)      -- bar chart
-  - closing_slide(lines)                -- outro w/ logo mark + wordmark
+  - closing_slide(lines)                -- content payoff line w/ logo mark
+  - intro_slide()                       -- channel-branded cold open (every episode)
+  - outro_slide()                       -- channel-branded subscribe CTA (every episode)
 """
 import os
 from PIL import Image, ImageDraw, ImageFont
@@ -147,6 +149,22 @@ def bars_slide(path, headline, labels, values, y_max=None, colors=None):
     _finish_chart_canvas(fig, path, headline, None)
 
 
+def draw_logo_mark(d, cx, cy, r_o=46, r_i=28, dot_r=11):
+    """The CompoundClear ring mark -- a peach-to-violet gradient arc with a
+    solid center dot, evoking a compounding curve looping back on itself."""
+    th = r_o - r_i
+    steps = 100
+    start_deg, end_deg = 55, 305
+    for i in range(steps):
+        t0 = start_deg + (end_deg - start_deg) * (i / steps)
+        t1 = start_deg + (end_deg - start_deg) * ((i + 1) / steps)
+        t = i / steps
+        color = tuple(int(PEACH[k] + (VIOLET[k] - PEACH[k]) * t) for k in range(3))
+        bbox = [cx - r_o, cy - r_o, cx + r_o, cy + r_o]
+        d.arc(bbox, t0, t1, fill=color, width=th)
+    d.ellipse([cx - dot_r, cy - dot_r, cx + dot_r, cy + dot_r], fill=INK)
+
+
 def closing_slide(path, lines):
     img, d = base_canvas()
     font = ImageFont.truetype(SERIF_BOLD, 66)
@@ -158,18 +176,7 @@ def closing_slide(path, lines):
         y += 90
 
     cx, cy = W // 2, int(H * 0.74)
-    r_o, r_i = 46, 28
-    th = r_o - r_i
-    steps = 100
-    start_deg, end_deg = 55, 305
-    for i in range(steps):
-        t0 = start_deg + (end_deg - start_deg) * (i / steps)
-        t1 = start_deg + (end_deg - start_deg) * ((i + 1) / steps)
-        t = i / steps
-        color = tuple(int(PEACH[k] + (VIOLET[k] - PEACH[k]) * t) for k in range(3))
-        bbox = [cx - r_o, cy - r_o, cx + r_o, cy + r_o]
-        d.arc(bbox, t0, t1, fill=color, width=th)
-    d.ellipse([cx - 11, cy - 11, cx + 11, cy + 11], fill=INK)
+    draw_logo_mark(d, cx, cy, r_o=46, r_i=28, dot_r=11)
 
     f2 = ImageFont.truetype(SANS_BOLD, 40)
     w_ = d.textlength(BRAND, font=f2)
@@ -178,5 +185,44 @@ def closing_slide(path, lines):
     f3 = ImageFont.truetype(SANS, 26)
     w_ = d.textlength(TAGLINE, font=f3)
     d.text(((W - w_) // 2, cy + 126), TAGLINE, font=f3, fill=INK_SOFT)
+
+    img.save(path)
+
+
+def intro_slide(path):
+    """Channel-branded cold open, shown first on every episode."""
+    img, d = base_canvas()
+    cx, cy = W // 2, int(H * 0.44)
+    draw_logo_mark(d, cx, cy, r_o=70, r_i=44, dot_r=16)
+
+    f2 = ImageFont.truetype(SANS_BOLD, 64)
+    w_ = d.textlength(BRAND, font=f2)
+    d.text(((W - w_) // 2, cy + 110), BRAND, font=f2, fill=INK)
+
+    f3 = ImageFont.truetype(SANS, 30)
+    w_ = d.textlength(TAGLINE, font=f3)
+    d.text(((W - w_) // 2, cy + 190), TAGLINE, font=f3, fill=INK_SOFT)
+
+    img.save(path)
+
+
+def outro_slide(path):
+    """Channel-branded subscribe CTA, shown last on every episode."""
+    img, d = base_canvas()
+    cx, cy = W // 2, int(H * 0.38)
+    draw_logo_mark(d, cx, cy, r_o=60, r_i=38, dot_r=14)
+
+    f2 = ImageFont.truetype(SANS_BOLD, 56)
+    w_ = d.textlength(BRAND, font=f2)
+    d.text(((W - w_) // 2, cy + 100), BRAND, font=f2, fill=INK)
+
+    f3 = ImageFont.truetype(SANS, 28)
+    w_ = d.textlength(TAGLINE, font=f3)
+    d.text(((W - w_) // 2, cy + 168), TAGLINE, font=f3, fill=INK_SOFT)
+
+    f4 = ImageFont.truetype(SANS_BOLD, 40)
+    cta = "Subscribe for more"
+    w_ = d.textlength(cta, font=f4)
+    d.text(((W - w_) // 2, cy + 240), cta, font=f4, fill=PEACH)
 
     img.save(path)
