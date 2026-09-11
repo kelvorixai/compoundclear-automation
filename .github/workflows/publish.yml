@@ -26,9 +26,22 @@ jobs:
       - name: Install Python deps
         run: pip install -r requirements.txt
 
+      - name: Cache Piper voice model
+        uses: actions/cache@v4
+        with:
+          path: models
+          key: piper-voice-en_US-lessac-high-v1
+
+      - name: Download Piper voice model if not cached
+        run: |
+          mkdir -p models
+          if [ ! -f models/en_US-lessac-high.onnx ]; then
+            curl -L -o models/en_US-lessac-high.onnx "https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/high/en_US-lessac-high.onnx?download=true"
+            curl -L -o models/en_US-lessac-high.onnx.json "https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/high/en_US-lessac-high.onnx.json?download=true"
+          fi
+
       - name: Run pipeline (build + upload)
         env:
-          GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }}
           YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
           YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
