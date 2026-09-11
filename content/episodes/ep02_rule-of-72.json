@@ -1,0 +1,159 @@
+{
+  "id": "ep02_rule-of-72",
+  "title": "The Rule of 72: Why a Few Percentage Points Change Everything",
+  "description": "There's a shortcut for figuring out how long it takes money to double, no calculator needed. We use it to show why the gap between a 2% savings account and a 10% index fund isn't small - it's the difference between doubling once and doubling five times.\n\nThis video uses AI-generated narration and visuals.\n\n#ruleof72 #investing #personalfinance",
+  "tags": [
+    "rule of 72",
+    "compound interest",
+    "investing",
+    "personal finance",
+    "money"
+  ],
+  "category_id": "27",
+  "privacy_status": "private",
+  "made_for_kids": false,
+  "segments": [
+    {
+      "id": 1,
+      "text": "Want to know how many years it takes your money to double? There's a shortcut simple enough to do in your head.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 2,
+      "text": "It's called the Rule of 72. Divide 72 by your annual interest rate, and you get roughly how many years until your money doubles.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 3,
+      "text": "The gap between a decent rate and a mediocre one isn't small. It's the difference between doubling five times or barely doubling once.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 4,
+      "text": "At two percent, doubling takes thirty-six years. At six percent, twelve years. At ten percent, about seven.",
+      "slide": {
+        "type": "bars",
+        "headline": "Years to double your money",
+        "labels": [
+          "2%",
+          "4%",
+          "6%",
+          "8%",
+          "10%",
+          "12%"
+        ],
+        "values": [
+          36,
+          18,
+          12,
+          9,
+          7.2,
+          6
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "text": "Here's what that actually looks like with real money. Ten thousand dollars, growing at six percent, left completely alone.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 6,
+      "text": "Every twelve years or so, it roughly doubles again. By year forty-eight, that's four doublings - and a very different number.",
+      "slide": {
+        "type": "chart",
+        "headline": "$10,000 growing at 6% for 48 years",
+        "sub": "Four doublings, one number",
+        "points": [
+          [
+            0,
+            10000
+          ],
+          [
+            4,
+            12624.77
+          ],
+          [
+            8,
+            15938.48
+          ],
+          [
+            12,
+            20121.96
+          ],
+          [
+            16,
+            25403.52
+          ],
+          [
+            20,
+            32071.35
+          ],
+          [
+            24,
+            40489.35
+          ],
+          [
+            28,
+            51116.87
+          ],
+          [
+            32,
+            64533.87
+          ],
+          [
+            36,
+            81472.52
+          ],
+          [
+            40,
+            102857.18
+          ],
+          [
+            44,
+            129854.82
+          ],
+          [
+            48,
+            163938.72
+          ]
+        ],
+        "mark": [
+          48,
+          163938.72
+        ],
+        "y_max": 180000,
+        "x_label": "Years",
+        "y_label": "Value ($)"
+      }
+    },
+    {
+      "id": 7,
+      "text": "The rate doesn't just add up over time. It multiplies. That's why a couple of extra percentage points matters more than people think.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 8,
+      "text": "The Rule of 72 isn't a trick. It's just what compounding looks like, sped up.",
+      "slide": {
+        "type": "closing",
+        "lines": [
+          "Divide 72 by your rate.",
+          "That's your doubling time."
+        ]
+      }
+    }
+  ],
+  "status": "ready"
+}
+
