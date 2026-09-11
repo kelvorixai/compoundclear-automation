@@ -1,0 +1,129 @@
+{
+  "id": "ep05_inflation-tax",
+  "title": "Why Cash Sitting Still Is Quietly Losing Value",
+  "description": "$10,000 in a drawer for 20 years - the number never changes, but what it can buy does. We show how average inflation erodes the real value of cash left idle, and compare it against a basic savings account and long-term investing.\n\nThis video uses AI-generated narration and visuals.\n\n#inflation #purchasingpower #personalfinance",
+  "tags": [
+    "inflation",
+    "purchasing power",
+    "savings",
+    "personal finance",
+    "money"
+  ],
+  "category_id": "27",
+  "privacy_status": "private",
+  "made_for_kids": false,
+  "segments": [
+    {
+      "id": 1,
+      "text": "Ten thousand dollars sitting in a drawer for twenty years. The number on it never changes. What it can buy does.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 2,
+      "text": "Inflation doesn't take money out of your account. It just makes every dollar in it worth a little less, every single year.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 3,
+      "text": "At an average of three and a half percent inflation, prices roughly double every twenty years.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 4,
+      "text": "So that same ten thousand dollars, left untouched, loses roughly half its real buying power in two decades.",
+      "slide": {
+        "type": "chart",
+        "headline": "$10,000 cash, real purchasing power",
+        "sub": "At 3.5% average inflation",
+        "points": [
+          [
+            0,
+            10000
+          ],
+          [
+            5,
+            8419.73
+          ],
+          [
+            10,
+            7089.19
+          ],
+          [
+            15,
+            5968.91
+          ],
+          [
+            20,
+            5025.66
+          ],
+          [
+            25,
+            4231.47
+          ],
+          [
+            30,
+            3562.78
+          ]
+        ],
+        "mark": [
+          20,
+          5025.66
+        ],
+        "y_max": 11000,
+        "x_label": "Years",
+        "y_label": "Real value ($, today's dollars)"
+      }
+    },
+    {
+      "id": 5,
+      "text": "Move that same money into a basic savings account paying one percent, and it barely helps. You're still losing ground to inflation every year.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 6,
+      "text": "Only real growth, above the inflation rate, actually protects what your money can buy.",
+      "slide": {
+        "type": "bars",
+        "headline": "Real purchasing power of $10,000 after 20 years",
+        "labels": [
+          "Cash (0%)",
+          "Savings (1%)",
+          "Invested (7%)"
+        ],
+        "values": [
+          5026,
+          6132,
+          19448
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "text": "Sitting still doesn't feel risky. But against inflation, doing nothing is still a choice, and it's usually the expensive one.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 8,
+      "text": "Cash feels safe. It just isn't neutral.",
+      "slide": {
+        "type": "closing",
+        "lines": [
+          "Cash feels safe.",
+          "It just isn't neutral."
+        ]
+      }
+    }
+  ],
+  "status": "ready"
+}
+
