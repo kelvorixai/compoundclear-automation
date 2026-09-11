@@ -1,0 +1,20 @@
+{
+  "cap_per_playlist": 12,
+  "playlists": [
+    {
+      "id": "money-math-series",
+      "youtube_playlist_id": "PLNhDSEhh0v10",
+      "title": "CompoundClear: The Money Math Series",
+      "topic": "core compound-interest / time-value-of-money mechanics (compounding, rule of 72, fee drag, minimum payments, inflation)",
+      "visibility": "public",
+      "episode_ids": [
+        "ep01_compound-interest",
+        "ep02_rule-of-72",
+        "ep03_fee-drag",
+        "ep04_minimum-payments",
+        "ep05_inflation-tax"
+      ]
+    }
+  ]
+}
+
