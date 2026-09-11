@@ -1,0 +1,43 @@
+name: Publish next CompoundClear episode
+
+on:
+  schedule:
+    - cron: "0 14 * * 2,5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install system deps (ffmpeg, fonts)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-liberation
+
+      - name: Install Python deps
+        run: pip install -r requirements.txt
+
+      - name: Run pipeline (build + upload)
+        env:
+          GOOGLE_TTS_API_KEY: ${{ secrets.GOOGLE_TTS_API_KEY }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: python scripts/run_pipeline.py
+
+      - name: Commit updated episode status
+        run: |
+          git config user.name "kelvorix-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add content/episodes/*.json
+          git diff --cached --quiet || git commit -m "Publish episode via automated pipeline [skip ci]"
+          git push
