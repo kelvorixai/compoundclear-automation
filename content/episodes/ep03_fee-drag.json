@@ -1,0 +1,176 @@
+{
+  "id": "ep03_fee-drag",
+  "title": "How a 1% Fee Quietly Steals Half Your Retirement",
+  "description": "A 1% expense ratio sounds tiny. Paid every year, on a balance that keeps compounding, it isn't. We run $100,000 forward 35 years at 7% with no fee, a 1% fee, and a 2% fee, and show exactly how much of your own money the fee actually costs you.\n\nThis video uses AI-generated narration and visuals.\n\n#investingfees #indexfunds #personalfinance",
+  "tags": [
+    "expense ratio",
+    "index funds",
+    "investing fees",
+    "retirement",
+    "personal finance"
+  ],
+  "category_id": "27",
+  "privacy_status": "private",
+  "made_for_kids": false,
+  "segments": [
+    {
+      "id": 1,
+      "text": "A one percent fee sounds tiny. Over thirty-five years, it can cost you literally half of everything you would have had.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 2,
+      "text": "Investment fees don't get paid once. They get paid every single year, on a balance that keeps growing. That's the trap.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 3,
+      "text": "Start with one hundred thousand dollars, growing at seven percent a year for thirty-five years, completely untouched by fees.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 4,
+      "text": "At the full seven percent, that money grows to just over one million dollars.",
+      "slide": {
+        "type": "chart",
+        "headline": "$100,000 at 7% for 35 years",
+        "sub": "No fees, full growth",
+        "points": [
+          [
+            0,
+            100000
+          ],
+          [
+            5,
+            140255.17
+          ],
+          [
+            10,
+            196715.14
+          ],
+          [
+            15,
+            275903.15
+          ],
+          [
+            20,
+            386968.45
+          ],
+          [
+            25,
+            542743.26
+          ],
+          [
+            30,
+            761225.5
+          ],
+          [
+            35,
+            1067658.15
+          ]
+        ],
+        "mark": [
+          35,
+          1067658.15
+        ],
+        "y_max": 1150000,
+        "x_label": "Years",
+        "y_label": "Value ($)"
+      }
+    },
+    {
+      "id": 5,
+      "text": "Now take a fund charging a two percent expense ratio. Same starting amount, same market - but your real return drops to five percent.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 6,
+      "text": "That same money grows to about five hundred fifty-two thousand dollars. Roughly half of what it could have been.",
+      "slide": {
+        "type": "chart",
+        "headline": "$100,000 at 5% for 35 years",
+        "sub": "After a 2% fee",
+        "points": [
+          [
+            0,
+            100000
+          ],
+          [
+            5,
+            127628.16
+          ],
+          [
+            10,
+            162889.46
+          ],
+          [
+            15,
+            207892.82
+          ],
+          [
+            20,
+            265329.77
+          ],
+          [
+            25,
+            338635.49
+          ],
+          [
+            30,
+            432194.24
+          ],
+          [
+            35,
+            551601.54
+          ]
+        ],
+        "mark": [
+          35,
+          551601.54
+        ],
+        "y_max": 1150000,
+        "x_label": "Years",
+        "y_label": "Value ($)"
+      }
+    },
+    {
+      "id": 7,
+      "text": "Line the outcomes up side by side, and the fee isn't a rounding error. It's the biggest expense of your entire investing life.",
+      "slide": {
+        "type": "bars",
+        "headline": "$100,000 after 35 years, by fee level",
+        "labels": [
+          "0% fee",
+          "1% fee",
+          "2% fee"
+        ],
+        "values": [
+          1067658,
+          768609,
+          551602
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "text": "The market doesn't decide how much you keep. The fee does.",
+      "slide": {
+        "type": "closing",
+        "lines": [
+          "Fees compound too.",
+          "Check yours."
+        ]
+      }
+    }
+  ],
+  "status": "ready"
+}
+
