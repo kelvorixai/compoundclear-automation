@@ -1,0 +1,173 @@
+{
+  "id": "ep04_minimum-payments",
+  "title": "The Real Cost of \"Just Paying the Minimum\"",
+  "description": "A $5,000 credit card balance at 24% APR, paid off with minimum payments only. We work out exactly how many years that takes, how much of it is pure interest, and what changes when you pay a fixed amount instead of the shrinking minimum.\n\nThis video uses AI-generated narration and visuals.\n\n#creditcarddebt #debtpayoff #personalfinance",
+  "tags": [
+    "credit card debt",
+    "minimum payment",
+    "debt payoff",
+    "personal finance",
+    "compound interest"
+  ],
+  "category_id": "27",
+  "privacy_status": "private",
+  "made_for_kids": false,
+  "segments": [
+    {
+      "id": 1,
+      "text": "A five thousand dollar credit card balance. Minimum payments only. Here's how long that actually takes to pay off.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 2,
+      "text": "Minimum payments are usually a small percentage of your balance, often around three percent, or a flat amount, whichever is higher.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 3,
+      "text": "At a typical twenty-four percent interest rate, most of that minimum payment is just covering the interest, not the debt itself.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 4,
+      "text": "The balance creeps down so slowly it barely looks like progress for years at a time.",
+      "slide": {
+        "type": "chart",
+        "headline": "$5,000 balance, minimum payments only",
+        "sub": "24% APR, 3% minimum payment",
+        "points": [
+          [
+            0,
+            5000
+          ],
+          [
+            1,
+            4431.92
+          ],
+          [
+            2,
+            3928.39
+          ],
+          [
+            3,
+            3482.07
+          ],
+          [
+            4,
+            3086.45
+          ],
+          [
+            5,
+            2735.78
+          ],
+          [
+            6,
+            2424.96
+          ],
+          [
+            7,
+            2149.45
+          ],
+          [
+            8,
+            1905.24
+          ],
+          [
+            9,
+            1688.77
+          ],
+          [
+            10,
+            1496.9
+          ],
+          [
+            11,
+            1326.83
+          ],
+          [
+            12,
+            1176.08
+          ],
+          [
+            13,
+            1021.78
+          ],
+          [
+            14,
+            826.45
+          ],
+          [
+            15,
+            578.71
+          ],
+          [
+            16,
+            264.52
+          ],
+          [
+            16.8,
+            0
+          ]
+        ],
+        "mark": [
+          16.8,
+          0
+        ],
+        "y_max": 5500,
+        "x_label": "Years",
+        "y_label": "Balance ($)"
+      }
+    },
+    {
+      "id": 5,
+      "text": "Sixteen years and nine months. That's how long it takes to clear that balance on minimums alone.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 6,
+      "text": "And the interest paid along the way? Eight thousand four hundred forty-one dollars. More than the original balance itself.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 7,
+      "text": "Pay a fixed amount instead of the shrinking minimum, and the picture changes completely.",
+      "slide": {
+        "type": "bars",
+        "headline": "Total interest paid, by payment strategy",
+        "labels": [
+          "Minimum only",
+          "$150 fixed",
+          "$250 fixed"
+        ],
+        "values": [
+          8442,
+          3322,
+          1449
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "text": "The minimum payment isn't designed to get you out of debt fast. It's designed to keep the balance alive.",
+      "slide": {
+        "type": "closing",
+        "lines": [
+          "Pay more than the minimum.",
+          "Every extra dollar compounds in your favor."
+        ]
+      }
+    }
+  ],
+  "status": "ready"
+}
+
