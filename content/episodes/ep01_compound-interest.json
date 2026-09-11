@@ -2,7 +2,13 @@
   "id": "ep01_compound-interest",
   "title": "Why Time in the Market Beats Timing the Market (The Actual Math)",
   "description": "The real reason \"time in the market\" works isn't magic - it's the shape of the compounding curve. We break down $10,000 growing at 7% a year over 40 years and show exactly why the last decade matters more than the first three combined.\n\nThis video uses AI-generated narration and visuals.\n\n#compoundinterest #investing #personalfinance",
-  "tags": ["compound interest", "investing", "personal finance", "money", "financial literacy"],
+  "tags": [
+    "compound interest",
+    "investing",
+    "personal finance",
+    "money",
+    "financial literacy"
+  ],
   "category_id": "27",
   "privacy_status": "private",
   "made_for_kids": false,
@@ -10,17 +16,23 @@
     {
       "id": 1,
       "text": "Everyone says time in the market beats timing the market. Here's the part nobody explains: why.",
-      "slide": {"type": "statement"}
+      "slide": {
+        "type": "statement"
+      }
     },
     {
       "id": 2,
       "text": "It's not really about time. It's about how compound growth curves, and that curve gets dramatically steeper the longer you leave it alone.",
-      "slide": {"type": "statement"}
+      "slide": {
+        "type": "statement"
+      }
     },
     {
       "id": 3,
       "text": "Take ten thousand dollars, growing at a steady seven percent a year. No new money added, just left alone.",
-      "slide": {"type": "statement"}
+      "slide": {
+        "type": "statement"
+      }
     },
     {
       "id": 4,
@@ -29,8 +41,56 @@
         "type": "chart",
         "headline": "$19,671.51",
         "sub": "10 years - roughly doubled",
-        "points": [[0,10000],[1,10700],[2,11449],[3,12250.43],[4,13107.96],[5,14025.52],[6,15007.31],[7,16057.81],[8,17181.86],[9,18384.59],[10,19671.51]],
-        "mark": [10, 19671.51],
+        "points": [
+          [
+            0,
+            10000
+          ],
+          [
+            1,
+            10700
+          ],
+          [
+            2,
+            11449
+          ],
+          [
+            3,
+            12250.43
+          ],
+          [
+            4,
+            13107.96
+          ],
+          [
+            5,
+            14025.52
+          ],
+          [
+            6,
+            15007.31
+          ],
+          [
+            7,
+            16057.81
+          ],
+          [
+            8,
+            17181.86
+          ],
+          [
+            9,
+            18384.59
+          ],
+          [
+            10,
+            19671.51
+          ]
+        ],
+        "mark": [
+          10,
+          19671.51
+        ],
         "y_max": 155000,
         "x_label": "Years",
         "y_label": "Value ($)"
@@ -43,8 +103,56 @@
         "type": "chart",
         "headline": "$38,696.84",
         "sub": "20 years - doubled again",
-        "points": [[0,10000],[2,11449],[4,13107.96],[6,15007.31],[8,17181.86],[10,19671.51],[12,22521.90],[14,25785.34],[16,29521.64],[18,33799.32],[20,38696.84]],
-        "mark": [20, 38696.84],
+        "points": [
+          [
+            0,
+            10000
+          ],
+          [
+            2,
+            11449
+          ],
+          [
+            4,
+            13107.96
+          ],
+          [
+            6,
+            15007.31
+          ],
+          [
+            8,
+            17181.86
+          ],
+          [
+            10,
+            19671.51
+          ],
+          [
+            12,
+            22521.9
+          ],
+          [
+            14,
+            25785.34
+          ],
+          [
+            16,
+            29521.64
+          ],
+          [
+            18,
+            33799.32
+          ],
+          [
+            20,
+            38696.84
+          ]
+        ],
+        "mark": [
+          20,
+          38696.84
+        ],
         "y_max": 155000,
         "x_label": "Years",
         "y_label": "Value ($)"
@@ -56,8 +164,18 @@
       "slide": {
         "type": "bars",
         "headline": "Same 7%. Very different dollars.",
-        "labels": ["0-10", "10-20", "20-30", "30-40"],
-        "values": [9671.51, 19025.33, 37425.71, 73622.03],
+        "labels": [
+          "0-10",
+          "10-20",
+          "20-30",
+          "30-40"
+        ],
+        "values": [
+          9671.51,
+          19025.33,
+          37425.71,
+          73622.03
+        ],
         "y_max": 85000
       }
     },
@@ -68,8 +186,56 @@
         "type": "chart",
         "headline": "The late curve",
         "sub": "Early years barely move. Late years explode.",
-        "points": [[0,10000],[4,13107.96],[8,17181.86],[12,22521.90],[16,29521.64],[20,38696.84],[24,50724.29],[28,66488.38],[32,87146.51],[36,114222.01],[40,149744.58]],
-        "mark": [40, 149744.58],
+        "points": [
+          [
+            0,
+            10000
+          ],
+          [
+            4,
+            13107.96
+          ],
+          [
+            8,
+            17181.86
+          ],
+          [
+            12,
+            22521.9
+          ],
+          [
+            16,
+            29521.64
+          ],
+          [
+            20,
+            38696.84
+          ],
+          [
+            24,
+            50724.29
+          ],
+          [
+            28,
+            66488.38
+          ],
+          [
+            32,
+            87146.51
+          ],
+          [
+            36,
+            114222.01
+          ],
+          [
+            40,
+            149744.58
+          ]
+        ],
+        "mark": [
+          40,
+          149744.58
+        ],
         "y_max": 155000,
         "x_label": "Years",
         "y_label": "Value ($)"
@@ -80,8 +246,13 @@
       "text": "Which means the compounding you give up by stopping early isn't proportional. It's the steepest part of the curve you never get to see.",
       "slide": {
         "type": "closing",
-        "lines": ["The rate never changes.", "The base does."]
+        "lines": [
+          "The rate never changes.",
+          "The base does."
+        ]
       }
     }
-  ]
+  ],
+  "status": "published",
+  "youtube_video_id": "Mh_3TLLsenU"
 }
