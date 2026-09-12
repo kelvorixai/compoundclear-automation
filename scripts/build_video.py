@@ -1,5 +1,6 @@
 """
-Builds one episode's MP4 from its JSON spec.
+Builds one episode's MP4 (and a custom thumbnail PNG alongside it) from its
+JSON spec.
 
 Every episode automatically gets a branded intro (cold open) and outro
 (subscribe CTA) prepended/appended around its own segments -- see
@@ -16,6 +17,16 @@ Episode JSON shape (see content/episodes/ep01_compound-interest.json):
   "format": "vertical",  # optional -- 1080x1920 (YouTube Shorts) canvas
                           # instead of the default 1920x1080 landscape one.
                           # Everything else about the schema is identical.
+  "hook": "...",          # optional -- a punchy one-line tease spoken as the
+                          # very first thing in the video (replacing the
+                          # generic "CompoundClear." cold open) so a viewer
+                          # who just clicked in from the thumbnail hears the
+                          # specific reason they clicked, immediately. Falls
+                          # back to the old brand-only intro if omitted.
+  "thumbnail_text": "...", # optional -- short (~5 words) punchy text for the
+                          # custom clickable thumbnail. Falls back to the
+                          # title if omitted.
+  "thumbnail_kicker": "...", # optional -- short line above the thumbnail text.
   "segments": [
     {"id": 1, "text": "...", "slide": {"type": "statement"}},
     {"id": 2, "text": "...", "slide": {"type": "chart", "headline": "...", "sub": "...",
@@ -29,7 +40,9 @@ Episode JSON shape (see content/episodes/ep01_compound-interest.json):
 }
 
 Usage: python build_video.py <episode.json> <output_dir>
-Writes <output_dir>/<id>.mp4 and returns its path on stdout.
+Writes <output_dir>/<id>/<id>.mp4 and <output_dir>/<id>/thumbnail.png (a
+1280x720 custom thumbnail -- see upload_youtube.py, which looks for it as a
+sibling of the returned video path) and returns the video path on stdout.
 """
 import json
 import os
@@ -49,10 +62,10 @@ ZOOM_MAX = 1.08
 
 # Every episode gets the same branded cold open and subscribe CTA, so these
 # live here (not in per-episode JSON) and apply automatically to all future
-# episodes.
+# episodes. INTRO_TEXT is now only a fallback -- an episode's own "hook"
+# field (see module docstring) replaces it when present.
 INTRO_TEXT = "CompoundClear."
 OUTRO_TEXT = "If this was useful, subscribe to CompoundClear for more of the math behind money."
-
 
 def run(cmd):
     print("+", " ".join(cmd))
@@ -62,7 +75,6 @@ def run(cmd):
         print(r.stderr[-3000:])
         raise RuntimeError("cmd failed: " + " ".join(cmd))
     return r
-
 
 def render_slide_clip(image_path, duration, out_path, fps=FPS):
     """Renders a still slide as a short clip with a slow, subtle zoom-in
@@ -76,7 +88,6 @@ def render_slide_clip(image_path, duration, out_path, fps=FPS):
     run(["ffmpeg", "-y", "-loop", "1", "-i", image_path,
          "-frames:v", str(frames), "-vf", vf, "-c:v", "libx264", "-r", str(fps),
          out_path])
-
 
 def render_slide(spec, path):
     t = spec["type"]
@@ -94,7 +105,6 @@ def render_slide(spec, path):
     else:
         raise ValueError(f"unknown slide type {t}")
 
-
 def build(episode_path, out_dir):
     with open(episode_path) as f:
         ep = json.load(f)
@@ -111,10 +121,18 @@ def build(episode_path, out_dir):
     os.makedirs(f"{work}/audio", exist_ok=True)
     os.makedirs(f"{work}/slides", exist_ok=True)
 
+    # An episode's own "hook" (a punchy one-line tease) replaces the generic
+    # brand-only cold open when present -- see module docstring. This is
+    # the pattern-interrupt for a viewer who just clicked in from the
+    # thumbnail: they hear the specific reason they clicked immediately,
+    # not three seconds of an unfamiliar logo before the content starts.
+    hook = (ep.get("hook") or "").strip()
+    intro_text = hook if hook else INTRO_TEXT
+
     # Branded intro + the episode's own segments + branded outro. Every
     # episode gets this automatically -- no per-episode JSON authoring needed.
     all_segments = (
-        [{"id": "intro", "text": INTRO_TEXT, "_kind": "intro"}]
+        [{"id": "intro", "text": intro_text, "_kind": "intro"}]
         + [dict(seg, _kind="content") for seg in ep["segments"]]
         + [{"id": "outro", "text": OUTRO_TEXT, "_kind": "outro"}]
     )
@@ -129,7 +147,7 @@ def build(episode_path, out_dir):
 
         slide_path = f"{work}/slides/slide{seg['id']}.png"
         if seg["_kind"] == "intro":
-            sl.intro_slide(slide_path)
+            sl.intro_slide(slide_path, hook=hook if hook else None)
         elif seg["_kind"] == "outro":
             sl.outro_slide(slide_path)
         else:
@@ -185,11 +203,24 @@ def build(episode_path, out_dir):
              "-c:v", "copy", "-c:a", "aac", "-b:a", "160k", "-shortest", out_mp4])
 
         final_path = os.path.abspath(out_mp4)
+
+        # Custom 1280x720 clickable thumbnail, written as "thumbnail.png"
+        # next to the video -- upload_youtube.py looks for it there and
+        # sets it via the Data API's thumbnails().set. Without this,
+        # YouTube auto-picks a frame from the video itself, almost always a
+        # flat slide with no hook -- one of the biggest drags on
+        # click-through for a channel with no subscriber base to rely on.
+        # Independent of the episode's own canvas orientation -- always
+        # 1280x720, YouTube's required thumbnail size, whether the episode
+        # itself is landscape or a vertical Short.
+        thumb_text = (ep.get("thumbnail_text") or ep.get("title") or "").strip()
+        thumb_kicker = (ep.get("thumbnail_kicker") or "").strip() or None
+        if thumb_text:
+            sl.thumbnail_slide("thumbnail.png", thumb_text, kicker=thumb_kicker)
     finally:
         os.chdir(cwd)
 
     return final_path
-
 
 if __name__ == "__main__":
     episode_path, out_dir = sys.argv[1], sys.argv[2]
