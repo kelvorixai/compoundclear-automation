@@ -13,6 +13,9 @@ Episode JSON shape (see content/episodes/ep01_compound-interest.json):
   "description": "...",
   "tags": ["..."],
   "privacy_status": "private",
+  "format": "vertical",  # optional -- 1080x1920 (YouTube Shorts) canvas
+                          # instead of the default 1920x1080 landscape one.
+                          # Everything else about the schema is identical.
   "segments": [
     {"id": 1, "text": "...", "slide": {"type": "statement"}},
     {"id": 2, "text": "...", "slide": {"type": "chart", "headline": "...", "sub": "...",
@@ -68,7 +71,7 @@ def render_slide_clip(image_path, duration, out_path, fps=FPS):
     it stays crisp on our flat vector-style slides without needing an
     expensive pre-upscale."""
     frames = max(1, round(duration * fps))
-    vf = (f"zoompan=z='min(zoom+{ZOOM_RATE},{ZOOM_MAX})':d={frames}:s=1920x1080:fps={fps},"
+    vf = (f"zoompan=z='min(zoom+{ZOOM_RATE},{ZOOM_MAX})':d={frames}:s={sl.W}x{sl.H}:fps={fps},"
           f"format=yuv420p")
     run(["ffmpeg", "-y", "-loop", "1", "-i", image_path,
          "-frames:v", str(frames), "-vf", vf, "-c:v", "libx264", "-r", str(fps),
@@ -95,6 +98,14 @@ def render_slide(spec, path):
 def build(episode_path, out_dir):
     with open(episode_path) as f:
         ep = json.load(f)
+
+    # "format": "vertical" -> 1080x1920 (YouTube Shorts). Anything else, or
+    # absent, keeps the original 1920x1080 landscape canvas. Must happen
+    # before any slide is rendered -- see slides.set_dimensions.
+    if ep.get("format") == "vertical":
+        sl.set_dimensions(1080, 1920)
+    else:
+        sl.set_dimensions(1920, 1080)
 
     work = os.path.join(out_dir, ep["id"])
     os.makedirs(f"{work}/audio", exist_ok=True)
