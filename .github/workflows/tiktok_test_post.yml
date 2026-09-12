@@ -14,13 +14,20 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          ffmpeg -version
+
       - name: Generate a short test video
         run: |
           ffmpeg -y \
             -f lavfi -i "color=c=0x0B1F3A:s=1080x1920:d=6:r=30" \
             -f lavfi -i "anullsrc=r=44100:cl=stereo" \
-            -vf "drawtext=text='CompoundClear':fontcolor=0xF5C542:fontsize=90:x=(w-text_w)/2:y=(h-text_h)/2-100,drawtext=text='TikTok Sandbox Test Post':fontcolor=white:fontsize=48:x=(w-text_w)/2:y=(h-text_h)/2+50" \
+            -vf "drawtext=text='CompoundClear':fontcolor=0xF5C542:fontsize=90:x=(w-text_w)/2:y=(h-text_h)/2-100:fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf,drawtext=text='TikTok Sandbox Test Post':fontcolor=white:fontsize=48:x=(w-text_w)/2:y=(h-text_h)/2+50:fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" \
             -t 6 -c:v libx264 -pix_fmt yuv420p -c:a aac -shortest sandbox_test.mp4
+          ls -la sandbox_test.mp4
 
       - name: Write test episode metadata
         run: |
