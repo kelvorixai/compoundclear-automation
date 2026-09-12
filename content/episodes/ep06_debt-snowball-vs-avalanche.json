@@ -1,0 +1,94 @@
+{
+  "id": "ep06_debt-snowball-vs-avalanche",
+  "title": "Same Budget, Same Payoff Date - Why the Order Still Costs You Money",
+  "description": "Two popular ways to pay off multiple debts faster: snowball (smallest balance first) or avalanche (highest rate first). We run both against the same three credit cards and the same $400 monthly budget - they finish in the exact same month, but the total interest isn't the same.\n\nThis video uses AI-generated narration and visuals.\n\n#Shorts #debtpayoff #creditcarddebt #personalfinance",
+  "tags": [
+    "debt payoff",
+    "credit card debt",
+    "debt snowball",
+    "debt avalanche",
+    "personal finance",
+    "money",
+    "Shorts"
+  ],
+  "category_id": "27",
+  "privacy_status": "private",
+  "made_for_kids": false,
+  "format": "vertical",
+  "segments": [
+    {
+      "id": 1,
+      "text": "Three credit cards. Four hundred dollars a month, same as always. Pay them off with the wrong strategy and it quietly costs you real money.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 2,
+      "text": "There are two popular ways to order the extra payment: snowball, smallest balance first, or avalanche, highest interest rate first.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 3,
+      "text": "Card A: five hundred dollars at twenty-two percent. Card B: two thousand at eighteen percent. Card C: six thousand at twenty-four percent.",
+      "slide": {
+        "type": "bars",
+        "headline": "Starting balances (annual rate)",
+        "labels": [
+          "Card A 22%",
+          "Card B 18%",
+          "Card C 24%"
+        ],
+        "values": [
+          500,
+          2000,
+          6000
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "text": "Run both strategies with the exact same four hundred dollar monthly budget, and they finish on the exact same month: twenty-eight months, just under two and a half years.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 5,
+      "text": "But the interest bill isn't the same. Snowball costs twenty-five hundred seventy-two dollars. Avalanche costs twenty-three hundred thirty-nine.",
+      "slide": {
+        "type": "bars",
+        "headline": "Total interest paid - same budget, same payoff date",
+        "labels": [
+          "Snowball",
+          "Avalanche"
+        ],
+        "values": [
+          2572.63,
+          2339.18
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "text": "Same monthly payment. Same finish line. Avalanche just saves you two hundred thirty-three dollars, for making one different choice each month: which card gets the extra.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 7,
+      "text": "Speed feels identical either way. The order is what actually costs you.",
+      "slide": {
+        "type": "closing",
+        "lines": [
+          "Speed feels the same.",
+          "The order still costs you."
+        ]
+      }
+    }
+  ],
+  "status": "ready"
+}
