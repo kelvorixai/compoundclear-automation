@@ -68,3 +68,46 @@ is a full working example. New topics (the remaining 7 from the original
 batch, plus anything new) need their script + slide data written in this
 same format before they'll be picked up -- that's the next thing to
 produce once this pipeline is live and proven on episode 1.
+
+## 4. TikTok cross-posting (optional, added Sep 2026)
+
+Same shape as the YouTube setup, but TikTok requires the account owner to
+click through the consent screens themselves -- no AI can do that step.
+
+The developer app ("CompoundClear Publisher", developers.tiktok.com) is
+already registered and configured (Login Kit + Content Posting API, Direct
+Post enabled, redirect URI pointed at
+kelvorixai.github.io/compound-clear/oauth-callback.html, a small static
+page that just displays whatever TikTok puts in the URL after you
+authorize). A Sandbox version of the app exists for testing before TikTok
+audits the app for public posting -- until that audit passes, every post
+TikTok accepts from this app is forced to private (SELF_ONLY) regardless
+of what the code requests, so Sandbox testing proves the pipeline works
+without anything appearing publicly on the account.
+
+One-time steps that need you:
+
+1. In the app's Sandbox tab -> Sandbox settings -> Target Users -> Add
+   account -> log in as @compoundclear and approve. This authorizes that
+   specific account to test against the unaudited app.
+2. Open the authorization URL (built from the app's Client Key) in a
+   browser signed in as @compoundclear, and approve access. TikTok
+   redirects to the oauth-callback.html page above with a one-time
+   `code` in the URL.
+3. That code gets exchanged once (by the agent, via TikTok's token
+   endpoint) for a refresh token, which becomes TIKTOK_REFRESH_TOKEN --
+   same pattern as YOUTUBE_REFRESH_TOKEN, stored only as a GitHub Actions
+   secret, never elsewhere.
+
+Repo secrets needed (Settings -> Secrets and variables -> Actions):
+
+- TIKTOK_CLIENT_KEY
+- TIKTOK_CLIENT_SECRET
+- TIKTOK_REFRESH_TOKEN
+
+Once those exist, scripts/upload_tiktok.py can post the same finished MP4
+the YouTube upload step already produces. It is not yet wired into
+.github/workflows/publish.yml as an automatic step -- that's a deliberate
+choice until a few Sandbox test posts have been verified end-to-end and,
+separately, until the app has passed TikTok's audit (needed before public
+posts actually go live on the real account rather than landing private).
