@@ -1,0 +1,106 @@
+{
+  "id": "ep07_retirement-withdrawal-rate",
+  "title": "The Withdrawal Rate That Decides If Your Retirement Money Runs Out",
+  "description": "A $1 million retirement portfolio can last indefinitely at one withdrawal rate, or run dry in under twenty years at another - same market, same balance. We run the actual math across five withdrawal rates and show exactly where the cliff is.\n\nThis video uses AI-generated narration and visuals.\n\n#Shorts #retirement #4percentrule #personalfinance",
+  "tags": [
+    "retirement",
+    "safe withdrawal rate",
+    "4 percent rule",
+    "personal finance",
+    "money",
+    "Shorts"
+  ],
+  "category_id": "27",
+  "privacy_status": "private",
+  "made_for_kids": false,
+  "format": "vertical",
+  "segments": [
+    {
+      "id": 1,
+      "text": "A one million dollar retirement account. Same portfolio, same market. At one withdrawal rate it can last indefinitely. At another, it runs out in nineteen years.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 2,
+      "text": "The rate that decides this isn't the market's return. It's simply how much of the balance you take out each year.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 3,
+      "text": "As long as what you withdraw stays under what the portfolio earns, the balance can keep growing. The moment it doesn't, the countdown starts.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 4,
+      "text": "At three percent, it's still growing after sixty years. At four, it lasts forty-five. At seven, just nineteen.",
+      "slide": {
+        "type": "bars",
+        "headline": "Years until a $1M portfolio is empty",
+        "labels": [
+          "3%",
+          "4%",
+          "5%",
+          "6%",
+          "7%"
+        ],
+        "values": [
+          60,
+          45,
+          30,
+          23,
+          19
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "text": "Here's what four percent actually looks like, year by year, assuming a modest three percent real return after inflation.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 6,
+      "text": "It grinds down slowly at first, then falls off a cliff in the final decade, as the shrinking balance keeps earning less each year.",
+      "slide": {
+        "type": "chart",
+        "headline": "$1M at a 4% withdrawal rate",
+        "sub": "3% real return - lasts 45 years",
+        "points": [
+          [0, 1000000],
+          [5, 913143.38],
+          [10, 846218.01],
+          [15, 768633.17],
+          [20, 678691.07],
+          [25, 574423.53],
+          [30, 453548.88],
+          [35, 313422.02],
+          [40, 150976.59],
+          [45, 0]
+        ],
+        "mark": [45, 0],
+        "y_max": 1050000,
+        "x_label": "Years",
+        "y_label": "Balance ($)"
+      }
+    },
+    {
+      "id": 7,
+      "text": "One number, chosen at the start, quietly decides whether your money outlives you, or the other way around.",
+      "slide": {
+        "type": "closing",
+        "lines": [
+          "Your withdrawal rate",
+          "is the real retirement math."
+        ]
+      }
+    }
+  ],
+  "status": "ready"
+}
