@@ -36,6 +36,30 @@ WORDMARK = "COMPOUNDCLEAR"
 BRAND = "CompoundClear"
 TAGLINE = "Plain-English guides to how money actually works"
 
+# Charts are rendered at one of these fixed figure sizes, then scaled to
+# fit whatever the current canvas is -- see _finish_chart_canvas. A wide
+# canvas (landscape) gets a wide chart; a tall one (vertical/Shorts) gets a
+# squarer chart, so the chart actually uses the available height instead of
+# sitting small in the middle of a lot of empty space below it.
+CHART_FIG_LANDSCAPE = (12, 7)
+CHART_FIG_VERTICAL = (9, 8)
+
+
+def chart_figsize():
+    return CHART_FIG_VERTICAL if H > W else CHART_FIG_LANDSCAPE
+
+
+def set_dimensions(w, h):
+    """Switch the canvas size used by every slide function below. Call this
+    once per episode, before rendering any of its slides, based on the
+    episode's own "format" field (see build_video.build): "vertical" for a
+    9:16 YouTube Shorts canvas (1080x1920), anything else (or absent) for
+    the default 16:9 landscape canvas (1920x1080). All the layout math in
+    this module works off the W/H globals, so nothing else needs to change
+    per-orientation."""
+    global W, H
+    W, H = w, h
+
 
 def base_canvas():
     img = Image.new("RGB", (W, H), BG)
@@ -87,10 +111,18 @@ def _finish_chart_canvas(fig, path, headline, sub):
     img, d = base_canvas()
     draw_wordmark(d)
     cw, ch = chart_img.size
-    scale = min((W - 160) / cw, (H * 0.62) / ch)
+    # Reserve the top ~280px for the headline/sub text, then center the
+    # chart in whatever's left down to a small bottom margin. On a tall
+    # (vertical/Shorts) canvas this fills the extra height instead of
+    # leaving it empty under a top-pinned chart; on the original landscape
+    # canvas the chart already nearly filled that space, so this doesn't
+    # noticeably move it.
+    area_top, area_bottom = 280, H - 80
+    scale = min((W - 160) / cw, (area_bottom - area_top) / ch)
     cw2, ch2 = int(cw * scale), int(ch * scale)
     chart_img = chart_img.resize((cw2, ch2))
-    img.paste(chart_img, ((W - cw2) // 2, int(H * 0.30)))
+    paste_y = area_top + (area_bottom - area_top - ch2) // 2
+    img.paste(chart_img, ((W - cw2) // 2, paste_y))
     d = ImageDraw.Draw(img)
 
     if headline:
@@ -109,7 +141,7 @@ def chart_slide(path, headline, sub, points, mark=None, y_max=None, x_label="", 
     """points: list of [x, y]. mark: optional [x, y] highlighted dot."""
     xs = [p[0] for p in points]
     ys = [p[1] for p in points]
-    fig, ax = plt.subplots(figsize=(W / 100, H / 100), dpi=100)
+    fig, ax = plt.subplots(figsize=chart_figsize(), dpi=100)
     fig.patch.set_facecolor(BGf)
     ax.set_facecolor(BGf)
     ax.plot(xs, ys, color=PEACHf, linewidth=5, solid_capstyle="round")
@@ -131,7 +163,7 @@ def chart_slide(path, headline, sub, points, mark=None, y_max=None, x_label="", 
 
 
 def bars_slide(path, headline, labels, values, y_max=None, colors=None):
-    fig, ax = plt.subplots(figsize=(W / 100, H / 100), dpi=100)
+    fig, ax = plt.subplots(figsize=chart_figsize(), dpi=100)
     fig.patch.set_facecolor(BGf)
     ax.set_facecolor(BGf)
     bar_colors = colors or [PEACHf if i < len(values) / 2 else VIOLETf for i in range(len(values))]
