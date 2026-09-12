@@ -1,0 +1,94 @@
+{
+  "id": "ep13_401k-early-withdrawal",
+  "title": "That $20,000 Cash-Out Is Actually a $213,000 Decision",
+  "description": "Cashing out an old 401(k) early feels like free money. After a 10% penalty and taxes, $20,000 becomes $13,600 in your pocket today. Left alone until retirement, that same $20,000 could grow into something very different. We run the real numbers.\n\nThis video uses AI-generated narration and visuals.\n\n#Shorts #401k #retirement #personalfinance",
+  "tags": [
+    "401k",
+    "retirement savings",
+    "early withdrawal",
+    "personal finance",
+    "investing",
+    "money",
+    "Shorts"
+  ],
+  "category_id": "27",
+  "privacy_status": "private",
+  "made_for_kids": false,
+  "format": "vertical",
+  "segments": [
+    {
+      "id": 1,
+      "text": "Twenty thousand dollars sitting in an old four oh one k. Cashing it out early feels like free money, right now.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 2,
+      "text": "It isn't free. A ten percent early withdrawal penalty, plus it's taxed as ordinary income - call it twenty two percent federal. That's thirty two percent gone before you see a dollar.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 3,
+      "text": "Twenty thousand dollars on paper. Thirteen thousand six hundred dollars in your account.",
+      "slide": {
+        "type": "bars",
+        "headline": "Cashing out today",
+        "labels": [
+          "Account balance",
+          "After penalty + tax"
+        ],
+        "values": [
+          20000,
+          13600
+        ],
+        "y_max": 22000
+      }
+    },
+    {
+      "id": 4,
+      "text": "Now compare that to just... leaving it. Thirty five years until sixty five, growing at a seven percent average return, no other contributions.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 5,
+      "text": "Same twenty thousand dollars. One version hands you thirteen thousand six hundred today. The other hands your future self two hundred thirteen thousand five hundred thirty two dollars.",
+      "slide": {
+        "type": "bars",
+        "headline": "Same $20,000, two outcomes",
+        "labels": [
+          "Cash out today",
+          "Left invested to 65"
+        ],
+        "values": [
+          13600,
+          213531.63
+        ],
+        "y_max": 230000
+      }
+    },
+    {
+      "id": 6,
+      "text": "The penalty isn't really ten percent. It's every year of growth between now and the day you would have needed it.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 7,
+      "text": "It's not really $20,000.",
+      "slide": {
+        "type": "closing",
+        "lines": [
+          "It's not really $20,000.",
+          "It's $213,000, disguised as $13,600."
+        ]
+      }
+    }
+  ],
+  "status": "ready"
+}
