@@ -2,7 +2,15 @@
   "id": "ep10_refinance-breakeven",
   "title": "The Refinance Math Nobody Checks Before Signing",
   "description": "A mortgage refinance can lower your monthly payment and still lose you money if you don't check one number first: the breakeven point. We run the real numbers on a $300,000 loan and show exactly when the closing costs actually pay for themselves.\n\nThis video uses AI-generated narration and visuals.\n\n#Shorts #mortgage #refinance #personalfinance",
-  "tags": ["mortgage", "refinance", "real estate", "home loan", "personal finance", "money", "Shorts"],
+  "tags": [
+    "mortgage",
+    "refinance",
+    "real estate",
+    "home loan",
+    "personal finance",
+    "money",
+    "Shorts"
+  ],
   "category_id": "27",
   "privacy_status": "private",
   "made_for_kids": false,
@@ -11,12 +19,16 @@
     {
       "id": 1,
       "text": "A mortgage refinance can lower your payment every month and still cost you money - if you don't check one number first.",
-      "slide": { "type": "statement" }
+      "slide": {
+        "type": "statement"
+      }
     },
     {
       "id": 2,
       "text": "Three hundred thousand dollars left on the loan. Twenty five years remaining at six point seven five percent. A refinance offer: a new thirty year loan at five point seven five percent, six thousand dollars in closing costs.",
-      "slide": { "type": "statement" }
+      "slide": {
+        "type": "statement"
+      }
     },
     {
       "id": 3,
@@ -24,15 +36,23 @@
       "slide": {
         "type": "bars",
         "headline": "Monthly payment",
-        "labels": ["Current loan", "Refinanced loan"],
-        "values": [2072.73, 1750.72],
+        "labels": [
+          "Current loan",
+          "Refinanced loan"
+        ],
+        "values": [
+          2072.73,
+          1750.72
+        ],
         "y_max": 2200
       }
     },
     {
       "id": 4,
       "text": "That's three hundred twenty two dollars saved every single month. But the closing costs have to be paid back first.",
-      "slide": { "type": "statement" }
+      "slide": {
+        "type": "statement"
+      }
     },
     {
       "id": 5,
@@ -41,8 +61,52 @@
         "type": "chart",
         "headline": "Cumulative savings vs. the $6,000 closing cost",
         "sub": "Breakeven at month 19",
-        "points": [[0, 0.0], [3, 966.03], [6, 1932.06], [9, 2898.09], [12, 3864.12], [15, 4830.15], [18, 5796.18], [19, 6118.19], [21, 6762.21], [24, 7728.24]],
-        "mark": [19, 6118.19],
+        "points": [
+          [
+            0,
+            0.0
+          ],
+          [
+            3,
+            966.03
+          ],
+          [
+            6,
+            1932.06
+          ],
+          [
+            9,
+            2898.09
+          ],
+          [
+            12,
+            3864.12
+          ],
+          [
+            15,
+            4830.15
+          ],
+          [
+            18,
+            5796.18
+          ],
+          [
+            19,
+            6118.19
+          ],
+          [
+            21,
+            6762.21
+          ],
+          [
+            24,
+            7728.24
+          ]
+        ],
+        "mark": [
+          19,
+          6118.19
+        ],
         "y_max": 8500,
         "x_label": "Months",
         "y_label": "Cumulative savings ($)"
@@ -51,16 +115,22 @@
     {
       "id": 6,
       "text": "Stay in the house past month nineteen and the refinance is pure profit. Sell or refinance again before that, and the closing costs never earn their keep.",
-      "slide": { "type": "statement" }
+      "slide": {
+        "type": "statement"
+      }
     },
     {
       "id": 7,
       "text": "The lower rate is only half the math.",
       "slide": {
         "type": "closing",
-        "lines": ["The rate isn't the whole story.", "Breakeven decides if it was worth it."]
+        "lines": [
+          "The rate isn't the whole story.",
+          "Breakeven decides if it was worth it."
+        ]
       }
     }
   ],
-  "status": "ready"
+  "status": "published",
+  "youtube_video_id": "nZs2CMXoNxM"
 }

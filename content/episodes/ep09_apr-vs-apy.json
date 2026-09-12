@@ -2,7 +2,15 @@
   "id": "ep09_apr-vs-apy",
   "title": "Your Card Says 24.99% APR. That's Not What It Actually Costs You",
   "description": "Your credit card statement quotes a yearly rate called APR. But issuers compound interest daily, not once a year - so the rate that actually hits your balance is higher. We run the real math on a $5,000 balance carried for one year and show the exact dollar gap.\n\nThis video uses AI-generated narration and visuals.\n\n#Shorts #creditcards #APR #personalfinance",
-  "tags": ["credit cards", "APR", "APY", "debt", "personal finance", "money", "Shorts"],
+  "tags": [
+    "credit cards",
+    "APR",
+    "APY",
+    "debt",
+    "personal finance",
+    "money",
+    "Shorts"
+  ],
   "category_id": "27",
   "privacy_status": "private",
   "made_for_kids": false,
@@ -11,12 +19,16 @@
     {
       "id": 1,
       "text": "Your credit card statement says twenty four point nine nine percent APR. That's not actually what carrying a balance costs you.",
-      "slide": { "type": "statement" }
+      "slide": {
+        "type": "statement"
+      }
     },
     {
       "id": 2,
       "text": "APR is the stated yearly rate. But card issuers compound interest daily, not once a year. That gap has its own name: APY.",
-      "slide": { "type": "statement" }
+      "slide": {
+        "type": "statement"
+      }
     },
     {
       "id": 3,
@@ -24,15 +36,23 @@
       "slide": {
         "type": "bars",
         "headline": "Stated rate vs. actual rate",
-        "labels": ["APR (stated)", "APY (daily compounding)"],
-        "values": [24.99, 28.38],
+        "labels": [
+          "APR (stated)",
+          "APY (daily compounding)"
+        ],
+        "values": [
+          24.99,
+          28.38
+        ],
         "y_max": 32
       }
     },
     {
       "id": 4,
       "text": "Put that in dollars. Carry a five thousand dollar balance, untouched, for exactly one year.",
-      "slide": { "type": "statement" }
+      "slide": {
+        "type": "statement"
+      }
     },
     {
       "id": 5,
@@ -40,24 +60,36 @@
       "slide": {
         "type": "bars",
         "headline": "Cost of carrying $5,000 for one year",
-        "labels": ["If it were simple APR", "What daily compounding charges"],
-        "values": [1249.5, 1418.94],
+        "labels": [
+          "If it were simple APR",
+          "What daily compounding charges"
+        ],
+        "values": [
+          1249.5,
+          1418.94
+        ],
         "y_max": 1600
       }
     },
     {
       "id": 6,
       "text": "That's an extra hundred sixty nine dollars you didn't see coming, purely from how often the interest compounds.",
-      "slide": { "type": "statement" }
+      "slide": {
+        "type": "statement"
+      }
     },
     {
       "id": 7,
       "text": "The label and the bill are not the same number.",
       "slide": {
         "type": "closing",
-        "lines": ["APR is the label.", "APY is the bill."]
+        "lines": [
+          "APR is the label.",
+          "APY is the bill."
+        ]
       }
     }
   ],
-  "status": "ready"
+  "status": "published",
+  "youtube_video_id": "gwgfcSZLLlw"
 }
