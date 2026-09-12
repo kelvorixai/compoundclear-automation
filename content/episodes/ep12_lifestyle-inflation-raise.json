@@ -1,0 +1,139 @@
+{
+  "id": "ep12_lifestyle-inflation-raise",
+  "title": "A $1,200 Raise You Save Becomes $16,580. Here's the Math",
+  "description": "You get a small raise - say two percent, about $1,200 a year. Spend it and nothing changes. Save just that amount every year instead, invested at a normal market return, and here's what a decade of saving one raise actually adds up to.\n\nThis video uses AI-generated narration and visuals.\n\n#Shorts #personalfinance #savingsplan #investing",
+  "tags": [
+    "lifestyle inflation",
+    "saving money",
+    "personal finance",
+    "investing",
+    "compound interest",
+    "money",
+    "Shorts"
+  ],
+  "category_id": "27",
+  "privacy_status": "private",
+  "made_for_kids": false,
+  "format": "vertical",
+  "segments": [
+    {
+      "id": 1,
+      "text": "You get a two percent raise. Twelve hundred dollars a year. Spend it, and by next month it feels like it was never there.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 2,
+      "text": "But save just that raise - the extra twelve hundred dollars - every year from now on, invested at a normal seven percent average return.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 3,
+      "text": "Spend it, and ten years from now you have exactly what you have today: nothing extra. Save it, and ten years from now that's sixteen thousand five hundred seventy nine dollars.",
+      "slide": {
+        "type": "bars",
+        "headline": "Ten years later",
+        "labels": [
+          "Spent the raise",
+          "Saved the raise"
+        ],
+        "values": [
+          0,
+          16579.74
+        ],
+        "y_max": 18000
+      }
+    },
+    {
+      "id": 4,
+      "text": "That's not from a bigger raise, or a better investment. It's the same twelve hundred dollars a year, just left alone to compound.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 5,
+      "text": "It builds slowly at first, then the growth starts doing more of the work than the deposits do.",
+      "slide": {
+        "type": "chart",
+        "headline": "Balance if you save the raise",
+        "sub": "$1,200/year at 7%",
+        "points": [
+          [
+            0,
+            0.0
+          ],
+          [
+            1,
+            1200.0
+          ],
+          [
+            2,
+            2484.0
+          ],
+          [
+            3,
+            3857.88
+          ],
+          [
+            4,
+            5327.93
+          ],
+          [
+            5,
+            6900.89
+          ],
+          [
+            6,
+            8583.95
+          ],
+          [
+            7,
+            10384.83
+          ],
+          [
+            8,
+            12311.76
+          ],
+          [
+            9,
+            14373.59
+          ],
+          [
+            10,
+            16579.74
+          ]
+        ],
+        "mark": [
+          10,
+          16579.74
+        ],
+        "y_max": 18000,
+        "x_label": "Years",
+        "y_label": "Balance ($)"
+      }
+    },
+    {
+      "id": 6,
+      "text": "And this works on every raise you ever get, not just the first one. The opportunity isn't the raise. It's the twelve months after it, before you get used to the money.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 7,
+      "text": "The raise wasn't the opportunity.",
+      "slide": {
+        "type": "closing",
+        "lines": [
+          "The raise wasn't the opportunity.",
+          "Not spending it was."
+        ]
+      }
+    }
+  ],
+  "status": "ready"
+}
