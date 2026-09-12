@@ -14,6 +14,18 @@
         "ep04_minimum-payments",
         "ep05_inflation-tax"
       ]
+    },
+    {
+      "id": "shorts",
+      "youtube_playlist_id": null,
+      "title": "CompoundClear: Shorts",
+      "topic": "vertical/Shorts-format quick hits, one concrete number-driven insight per video, any money-mechanics domain -- not tied to the long-form topic rotation above",
+      "visibility": "public",
+      "no_cap": true,
+      "episode_ids": [
+        "ep06_debt-snowball-vs-avalanche",
+        "ep07_retirement-withdrawal-rate"
+      ]
     }
   ]
 }
