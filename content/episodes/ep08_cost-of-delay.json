@@ -1,0 +1,85 @@
+{
+  "id": "ep08_cost-of-delay",
+  "title": "Why Starting at 25 Beats Investing Three Times as Long Starting at 35",
+  "description": "Two investors put away the exact same $300 a month at the exact same 7% annual return. One invests for ten years starting at 25, then stops adding money forever. The other starts at 35 and keeps contributing every month for the next thirty years straight. We run the real month-by-month math on both and show who actually has more at 65 - and by how much.\n\nThis video uses AI-generated narration and visuals.\n\n#compoundinterest #investing #personalfinance",
+  "tags": ["compound interest", "investing", "personal finance", "money", "financial literacy", "time value of money"],
+  "category_id": "27",
+  "privacy_status": "private",
+  "made_for_kids": false,
+  "segments": [
+    {
+      "id": 1,
+      "text": "Two people put away the exact same three hundred dollars a month, at the exact same seven percent return. One of them ends up with over fifty five thousand dollars more. Here's the part that surprises people: the one who ends up ahead invested for way less time.",
+      "slide": { "type": "statement" }
+    },
+    {
+      "id": 2,
+      "text": "Investor A starts at twenty five. Three hundred dollars a month, every month, for exactly ten years. Then stops completely - no more deposits, ever. The money just sits there and grows.",
+      "slide": { "type": "statement" }
+    },
+    {
+      "id": 3,
+      "text": "By sixty five, that ten-year stretch of contributions alone has grown into four hundred twenty one thousand, four hundred fifty two dollars.",
+      "slide": {
+        "type": "chart",
+        "headline": "$421,452.72",
+        "sub": "Age 65 - stopped contributing at 35",
+        "points": [[0, 0.0], [5, 21477.87], [10, 51925.44], [15, 73610.82], [20, 104352.56], [25, 147932.82], [30, 209713.3], [35, 297294.87], [40, 421452.72]],
+        "mark": [40, 421452.72],
+        "y_max": 440000,
+        "x_label": "Years since starting (age 25)",
+        "y_label": "Balance ($)"
+      }
+    },
+    {
+      "id": 4,
+      "text": "Investor B starts ten years later, at thirty five. Same three hundred dollars a month. But B never stops - contributing every single month for the next thirty years, all the way to sixty five.",
+      "slide": { "type": "statement" }
+    },
+    {
+      "id": 5,
+      "text": "Thirty years of steady contributions gets B to three hundred sixty five thousand, nine hundred ninety one dollars by sixty five.",
+      "slide": {
+        "type": "chart",
+        "headline": "$365,991.30",
+        "sub": "Age 65 - contributed for all 30 years",
+        "points": [[0, 0.0], [5, 21477.87], [10, 51925.44], [15, 95088.69], [20, 156278.0], [25, 243021.51], [30, 365991.3]],
+        "mark": [30, 365991.3],
+        "y_max": 385000,
+        "x_label": "Years since starting (age 35)",
+        "y_label": "Balance ($)"
+      }
+    },
+    {
+      "id": 6,
+      "text": "Look at what each investor actually paid in. A put in thirty six thousand dollars total. B put in three times as much: a hundred eight thousand dollars.",
+      "slide": {
+        "type": "bars",
+        "headline": "Total money actually contributed",
+        "labels": ["Investor A", "Investor B"],
+        "values": [36000, 108000],
+        "y_max": 120000
+      }
+    },
+    {
+      "id": 7,
+      "text": "And yet at sixty five, A is still ahead: four hundred twenty one thousand versus three hundred sixty six thousand, despite contributing for a third of the time and a third of the money.",
+      "slide": {
+        "type": "bars",
+        "headline": "Balance at age 65",
+        "labels": ["Investor A", "Investor B"],
+        "values": [421452.72, 365991.3],
+        "y_max": 440000
+      }
+    },
+    {
+      "id": 8,
+      "text": "Ten years of contributions beat thirty, because compounding needed time to work, not more money thrown at it.",
+      "slide": {
+        "type": "closing",
+        "lines": ["Ten years of contributions beat thirty.", "Because compounding needed time, not more money."]
+      }
+    }
+  ],
+  "status": "ready"
+}
