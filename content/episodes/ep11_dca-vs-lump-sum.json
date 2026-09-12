@@ -1,0 +1,297 @@
+{
+  "id": "ep11_dca-vs-lump-sum",
+  "title": "Dollar-Cost Averaging vs. Lump Sum: What the Math Actually Shows",
+  "description": "You have $12,000 to invest - all at once, or spread across the next 12 months? We run the real math across three different market paths (rising, falling, and choppy) to see which strategy actually wins, and why the honest answer depends on markets nobody can predict in advance.\n\nThis video uses AI-generated narration and visuals.\n\n#investing #dollarcostaveraging #personalfinance",
+  "tags": [
+    "dollar cost averaging",
+    "lump sum investing",
+    "investing",
+    "index funds",
+    "market timing",
+    "personal finance",
+    "money"
+  ],
+  "category_id": "27",
+  "privacy_status": "private",
+  "made_for_kids": false,
+  "segments": [
+    {
+      "id": 1,
+      "text": "You have twelve thousand dollars to invest. Put it all in today, or spread it out - one thousand dollars a month, for the next twelve months. Which one actually makes more money?",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 2,
+      "text": "The honest answer depends on something you can't know in advance: what the market does next. So let's run all three versions of that and see.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 3,
+      "text": "First scenario: the market rises steadily over the year. Historically, this is the most common outcome.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 4,
+      "text": "A steady climb, up about eighteen percent over twelve months, no drops along the way.",
+      "slide": {
+        "type": "chart",
+        "headline": "Scenario 1: rising market",
+        "sub": "+18% over 12 months",
+        "points": [
+          [
+            0,
+            100.0
+          ],
+          [
+            1,
+            101.5
+          ],
+          [
+            2,
+            103.0
+          ],
+          [
+            3,
+            104.5
+          ],
+          [
+            4,
+            106.0
+          ],
+          [
+            5,
+            107.5
+          ],
+          [
+            6,
+            109.0
+          ],
+          [
+            7,
+            110.5
+          ],
+          [
+            8,
+            112.0
+          ],
+          [
+            9,
+            113.5
+          ],
+          [
+            10,
+            115.0
+          ],
+          [
+            11,
+            116.5
+          ],
+          [
+            12,
+            118.0
+          ]
+        ],
+        "y_max": 125,
+        "x_label": "Month",
+        "y_label": "Price index"
+      }
+    },
+    {
+      "id": 5,
+      "text": "Lump sum buys twelve thousand dollars of shares on day one, at the lowest price the whole year will see. Dollar-cost averaging buys some of those shares later, at higher prices.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 6,
+      "text": "Lump sum: fourteen thousand one hundred sixty dollars. Dollar-cost averaging: twelve thousand nine hundred thirty one dollars.",
+      "slide": {
+        "type": "bars",
+        "headline": "Ending value after 12 months",
+        "labels": [
+          "Lump sum",
+          "Dollar-cost averaging"
+        ],
+        "values": [
+          14160.0,
+          12930.88
+        ],
+        "y_max": 16000
+      }
+    },
+    {
+      "id": 7,
+      "text": "In a rising market, lump sum wins by over twelve hundred dollars. Every dollar was working at the lowest price for the longest time.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 8,
+      "text": "Second scenario: the market drops sharply in the first half of the year, then goes flat.",
+      "slide": {
+        "type": "chart",
+        "headline": "Scenario 2: falling, then flat",
+        "sub": "100 down to 82, then flat",
+        "points": [
+          [
+            0,
+            100
+          ],
+          [
+            1,
+            97
+          ],
+          [
+            2,
+            94
+          ],
+          [
+            3,
+            91
+          ],
+          [
+            4,
+            88
+          ],
+          [
+            5,
+            85
+          ],
+          [
+            6,
+            82
+          ],
+          [
+            7,
+            82
+          ],
+          [
+            8,
+            82
+          ],
+          [
+            9,
+            82
+          ],
+          [
+            10,
+            82
+          ],
+          [
+            11,
+            82
+          ],
+          [
+            12,
+            82
+          ]
+        ],
+        "y_max": 105,
+        "x_label": "Month",
+        "y_label": "Price index"
+      }
+    },
+    {
+      "id": 9,
+      "text": "Lump sum: nine thousand eight hundred forty dollars - a real loss. Dollar-cost averaging: eleven thousand five hundred fifteen dollars.",
+      "slide": {
+        "type": "bars",
+        "headline": "Ending value after 12 months",
+        "labels": [
+          "Lump sum",
+          "Dollar-cost averaging"
+        ],
+        "values": [
+          9840.0,
+          11515.32
+        ],
+        "y_max": 13000
+      }
+    },
+    {
+      "id": 10,
+      "text": "Here dollar-cost averaging wins by over sixteen hundred dollars. Spreading the purchases out meant buying more shares while prices were down, not just one lump at the top.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 11,
+      "text": "Third scenario: the market goes nowhere for the year, but gets there by swinging sharply up and down along the way.",
+      "slide": {
+        "type": "bars",
+        "headline": "Scenario 3: choppy, ends flat",
+        "labels": [
+          "Lump sum",
+          "Dollar-cost averaging"
+        ],
+        "values": [
+          12120.0,
+          12230.31
+        ],
+        "y_max": 13500
+      }
+    },
+    {
+      "id": 12,
+      "text": "Almost a dead heat. Dollar-cost averaging edges ahead by about one hundred ten dollars, because the dips along the way let it pick up slightly cheaper shares on average.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 13,
+      "text": "Now stretch all three another five years, growing at seven percent, with no more money added. Does the early winner stay the winner?",
+      "slide": {
+        "type": "bars",
+        "headline": "Dollar-cost averaging's edge over lump sum, 5 years later",
+        "sub": "Positive = DCA ahead, negative = lump sum ahead",
+        "labels": [
+          "Rising market",
+          "Falling market",
+          "Choppy market"
+        ],
+        "values": [
+          -1723.9,
+          2349.73,
+          154.72
+        ],
+        "y_max": 3000
+      }
+    },
+    {
+      "id": 14,
+      "text": "In the rising scenario, lump sum's early lead barely shrinks. In the falling scenario, dollar-cost averaging's advantage actually grows - that first-year cushion keeps compounding. The choppy scenario stays close either way.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 15,
+      "text": "Lump sum tends to win, because markets go up more years than they go down. Dollar-cost averaging's real advantage was never a bigger return - it's a smaller loss on the years you guessed wrong.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 16,
+      "text": "Nobody knows which market you'll get.",
+      "slide": {
+        "type": "closing",
+        "lines": [
+          "Nobody knows which market you'll get.",
+          "That's the actual argument for spreading it out."
+        ]
+      }
+    }
+  ],
+  "status": "ready"
+}
