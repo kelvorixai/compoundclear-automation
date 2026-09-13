@@ -1,0 +1,111 @@
+{
+  "id": "ep15_insurance-deductible-tradeoff",
+  "title": "The $300 You'd Save on Insurance Could Cost You $1,500 -- Here's the Math",
+  "hook": "A cheaper insurance plan with a bigger deductible isn't automatically the better deal -- here's the exact claim frequency where it stops paying off.",
+  "thumbnail_kicker": "INSURANCE MATH",
+  "thumbnail_text": "$300 SAVED, $1,500 AT RISK",
+  "format": "vertical",
+  "description": "Plan A: $1,100/year premium, $500 deductible. Plan B: $800/year premium, $2,000 deductible. Plan B looks like the obvious pick until you do the expected-value math on how often you'd actually file a claim. We run the numbers on exactly where the break-even point sits.\n\nThis video uses AI-generated narration and visuals.\n\n#Shorts #insurance #personalfinance #expectedvalue",
+  "tags": [
+    "insurance",
+    "deductible",
+    "premium",
+    "personal finance",
+    "money",
+    "expected value",
+    "Shorts"
+  ],
+  "category_id": "27",
+  "privacy_status": "private",
+  "made_for_kids": false,
+  "segments": [
+    {
+      "id": 1,
+      "text": "Two insurance plans. Plan A: eleven hundred dollars a year, five hundred dollar deductible. Plan B: eight hundred dollars a year, two thousand dollar deductible.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 2,
+      "text": "Plan B saves you three hundred dollars a year you don't file a claim. But file one, and you're on the hook for fifteen hundred dollars more than Plan A.",
+      "slide": {
+        "type": "bars",
+        "headline": "Premium vs. deductible",
+        "labels": [
+          "Plan A premium",
+          "Plan B premium",
+          "Plan A deductible",
+          "Plan B deductible"
+        ],
+        "values": [
+          1100,
+          800,
+          500,
+          2000
+        ],
+        "y_max": 2200
+      }
+    },
+    {
+      "id": 3,
+      "text": "So which is actually cheaper? It depends how often you expect to file a claim -- and there's an exact break-even point.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 4,
+      "text": "The savings equal the extra risk at exactly a twenty percent chance of a claim each year -- about once every five years.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 5,
+      "text": "Expect claims less often than that -- say a fifteen percent chance a year -- and Plan B wins: eleven hundred dollars versus eleven hundred seventy five.",
+      "slide": {
+        "type": "bars",
+        "headline": "Expected annual cost at a 15% claim chance",
+        "labels": [
+          "Plan A",
+          "Plan B"
+        ],
+        "values": [
+          1175,
+          1100
+        ],
+        "y_max": 1300
+      }
+    },
+    {
+      "id": 6,
+      "text": "Expect claims more often -- a forty percent chance a year -- and Plan A wins instead: thirteen hundred dollars versus sixteen hundred.",
+      "slide": {
+        "type": "bars",
+        "headline": "Expected annual cost at a 40% claim chance",
+        "labels": [
+          "Plan A",
+          "Plan B"
+        ],
+        "values": [
+          1300,
+          1600
+        ],
+        "y_max": 1700
+      }
+    },
+    {
+      "id": 7,
+      "text": "The cheaper premium isn't always cheaper. Do the expected-value math first.",
+      "slide": {
+        "type": "closing",
+        "lines": [
+          "The cheaper premium isn't always cheaper.",
+          "Do the expected-value math first."
+        ]
+      }
+    }
+  ],
+  "status": "ready"
+}
