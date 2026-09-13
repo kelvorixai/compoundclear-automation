@@ -12,7 +12,9 @@
         "ep02_rule-of-72",
         "ep03_fee-drag",
         "ep04_minimum-payments",
-        "ep05_inflation-tax"
+        "ep05_inflation-tax",
+        "ep11_dca-vs-lump-sum",
+        "ep14_contribution-timing"
       ]
     },
     {
@@ -24,7 +26,11 @@
       "no_cap": true,
       "episode_ids": [
         "ep06_debt-snowball-vs-avalanche",
-        "ep07_retirement-withdrawal-rate"
+        "ep07_retirement-withdrawal-rate",
+        "ep12_lifestyle-inflation-raise",
+        "ep13_401k-early-withdrawal",
+        "ep15_insurance-deductible-tradeoff",
+        "ep16_forgotten-subscription-cost"
       ]
     }
   ]
