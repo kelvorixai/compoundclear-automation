@@ -6,10 +6,16 @@ on:
 permissions:
   contents: read
 
+env:
+  # Google Chrome ships on the GitHub runner image. The apt "chromium-browser"
+  # package on Ubuntu 24.04 is a snap shim that can hang instead of failing,
+  # which is exactly what stalled the first run.
+  CHROME_BIN: google-chrome
+
 jobs:
   render:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
 
@@ -20,18 +26,21 @@ jobs:
       - name: Install deps
         run: |
           sudo apt-get update
-          sudo apt-get install -y ffmpeg chromium-browser fonts-liberation \
-            fonts-dejavu-core fonts-texgyre
+          sudo apt-get install -y ffmpeg fonts-liberation fonts-dejavu-core fonts-texgyre
           pip install google-api-python-client google-auth google-auth-oauthlib
 
-      - name: Show renderer
+      - name: Preflight - prove the renderer works before rendering 1407 frames
         run: |
-          which chromium-browser || which chromium || true
+          which google-chrome
+          google-chrome --version
           nproc
+          google-chrome --headless --disable-gpu --no-sandbox --hide-scrollbars \
+            --screenshot=/tmp/preflight.png --window-size=1920,1080 \
+            "file://$GITHUB_WORKSPACE/render/engine.html?f=300"
+          test -s /tmp/preflight.png || { echo "renderer produced no PNG"; exit 1; }
+          echo "preflight OK: $(stat -c%s /tmp/preflight.png) bytes"
 
       - name: Render the video
-        env:
-          CHROME_BIN: chromium-browser
         run: python render/build_pilot.py
 
       - name: Upload to YouTube
@@ -41,7 +50,7 @@ jobs:
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
         run: |
           python - <<'PY'
-          import sys, os
+          import sys
           sys.path.insert(0, "scripts")
           from upload_youtube import upload
           upload("render/out/pilot.mp4", "render/pilot.json")
