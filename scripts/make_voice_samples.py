@@ -1,9 +1,7 @@
 """
-Render the pilot narration, one MP3 per beat, and write the measured
-durations to samples/vo_durations.json so the animation can be cut to the
-voice rather than the voice squeezed into the animation.
-
-Run:  python scripts/make_voice_samples.py
+Render narration for the whole day's batch, one MP3 per line, and write
+measured durations to samples/vo_batch.json so each animation can be cut
+to the real voice timings.
 """
 import asyncio
 import json
@@ -15,47 +13,74 @@ import edge_tts
 VOICE = "en-US-AndrewMultilingualNeural"
 RATE = "-4%"
 
-LINES = [
-    ("l1", "Most people use AI like a search box."),
-    ("l2", "One line in. One generic answer out. Then twenty minutes fixing it."),
-    ("l3", "The fix is a five part prompt. Role: whose expertise to borrow. "
-           "Context: what actually happened, and what's at stake. "
-           "Task: one clear verb, one deliverable. "
-           "Format: the length, structure and tone you want. "
-           "And examples: a sample of the style, plus what to avoid."),
-    ("l4", "Here's the same job briefed two ways. One line gets you a generic "
-           "paragraph you'll rewrite anyway. The full brief gets you something "
-           "you could send on the first pass."),
-    ("l5", "In a Harvard and B C G study of seven hundred and fifty eight "
-           "professionals, the ones using AI with proper guidance produced work "
-           "rated forty percent higher, and did it twenty five percent faster."),
-    ("l6", "Brief it like a colleague, not a search box."),
-]
+SCRIPTS = {
+    # LONG 2 — the three follow-ups
+    "b2": [
+        "What AI hands you first is a draft, not an answer.",
+        "People who get great results out of it don't write better first prompts. They send better second ones.",
+        "Follow up one. Cut this by forty percent without losing any of the points. "
+        "A percentage is measurable. Make it shorter gets you a ten percent trim. "
+        "Cut it by forty gets you a rewrite.",
+        "Follow up two. Rewrite this so it sounds like a calm, senior person who is confident "
+        "about the plan but not dismissive of the concern. Tone lands better as a description "
+        "of a person than as a list of adjectives.",
+        "Follow up three. Act as the most sceptical person on the receiving end. List the three "
+        "objections they'd have, and tell me which one this draft doesn't answer. That turns the "
+        "model from writer into reviewer, which is where it's most reliable.",
+        "And when something's wrong, say what's wrong. Try again just gets you a random variation.",
+    ],
+    # LONG 3 — the context pack
+    "b3": [
+        "Ninety percent of the AI doesn't get it is missing context that never changes.",
+        "Your role. Who reads your work. The words your company uses. How you write.",
+        "So write it once. One block. Your job and your audience in two lines. The five acronyms "
+        "your company says constantly. And three or four sentences you actually wrote, because a "
+        "real sample does more for tone than any adjective you can think of.",
+        "Then add the line that kills most invented facts. Don't invent numbers, names or dates. "
+        "If you need one, write NEED, and I'll fill it in.",
+        "Paste it at the top of anything that matters. In tools with memory, paste it once and it "
+        "applies to everything after.",
+        "One block, written once. Every prompt you send after it is better.",
+    ],
+    # SHORT 1 — percentages beat adjectives
+    "s1": [
+        "Stop telling AI to make it shorter. That gets you a ten percent trim. "
+        "Say cut this by forty percent without losing any of the points. "
+        "A percentage is measurable. An adjective isn't.",
+    ],
+    # SHORT 2 — the NEED rule
+    "s2": [
+        "AI will invent a number and sound completely certain about it. One line stops that. "
+        "Add: don't invent numbers, names or dates, and if you need one, write NEED, "
+        "and I'll fill it in.",
+    ],
+}
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "samples")
 
 
-def duration(path: str) -> float:
+def dur(path: str) -> float:
     out = subprocess.run(
         ["ffprobe", "-v", "error", "-show_entries", "format=duration",
-         "-of", "csv=p=0", path],
-        capture_output=True, text=True, check=True,
-    )
+         "-of", "csv=p=0", path], capture_output=True, text=True, check=True)
     return round(float(out.stdout.strip()), 3)
 
 
 async def main() -> None:
     os.makedirs(OUT_DIR, exist_ok=True)
-    durations = {}
-    for slug, text in LINES:
-        path = os.path.join(OUT_DIR, f"vo_{slug}.mp3")
-        await edge_tts.Communicate(text, VOICE, rate=RATE).save(path)
-        durations[slug] = duration(path)
-        print(f"{slug}: {durations[slug]}s  {text[:50]}...")
-    meta = os.path.join(OUT_DIR, "vo_durations.json")
-    with open(meta, "w") as f:
-        json.dump({"voice": VOICE, "rate": RATE, "durations": durations}, f, indent=2)
-    print("total:", round(sum(durations.values()), 2), "s")
+    meta = {}
+    for vid, lines in SCRIPTS.items():
+        meta[vid] = []
+        for i, text in enumerate(lines, 1):
+            path = os.path.join(OUT_DIR, f"{vid}_l{i}.mp3")
+            await edge_tts.Communicate(text, VOICE, rate=RATE).save(path)
+            d = dur(path)
+            meta[vid].append({"file": f"{vid}_l{i}.mp3", "sec": d, "text": text})
+            print(f"{vid}_l{i}: {d}s")
+        print(f"  -> {vid} total {round(sum(x['sec'] for x in meta[vid]),2)}s")
+    with open(os.path.join(OUT_DIR, "vo_batch.json"), "w") as f:
+        json.dump(meta, f, indent=2)
+    print("wrote vo_batch.json")
 
 
 if __name__ == "__main__":
