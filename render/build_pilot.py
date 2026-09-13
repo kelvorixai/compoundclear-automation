@@ -10,6 +10,7 @@ import json
 import os
 import shutil
 import subprocess
+import threading
 from concurrent.futures import ThreadPoolExecutor
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -20,7 +21,7 @@ SAMPLES = os.path.join(ROOT, "samples")
 
 FPS = 24
 TOTAL_FRAMES = 1407          # 58.66s at 24fps
-CHROME = os.environ.get("CHROME_BIN", "chromium-browser")
+CHROME = os.environ.get("CHROME_BIN", "google-chrome")
 
 # (file, offset_ms) — measured from the real audio, animation was cut to these
 VO = [
@@ -43,29 +44,46 @@ def shot(page: str, out_path: str, w: int, h: int, scale: int = 1) -> None:
     if scale != 1:
         cmd.append(f"--force-device-scale-factor={scale}")
     cmd += [f"--screenshot={out_path}", f"--window-size={w},{h}", page]
-    subprocess.run(cmd, check=False, capture_output=True)
+    try:
+        subprocess.run(cmd, check=False, capture_output=True, timeout=90)
+    except subprocess.TimeoutExpired:
+        print(f"TIMEOUT rendering {out_path}", flush=True)
+
+
+_done = 0
+_lock = threading.Lock()
 
 
 def render_frame(i: int) -> None:
+    global _done
     shot(f"file://{HERE}/engine.html?f={i}",
          os.path.join(FRAMES, f"{i:04d}.png"), 1920, 1080)
+    with _lock:
+        _done += 1
+        if _done % 25 == 0 or _done == TOTAL_FRAMES:
+            print(f"  {_done}/{TOTAL_FRAMES} frames", flush=True)
 
 
 def main() -> None:
     shutil.rmtree(OUT, ignore_errors=True)
     os.makedirs(FRAMES, exist_ok=True)
 
-    print(f"rendering {TOTAL_FRAMES} frames...")
+    print(f"rendering {TOTAL_FRAMES} frames with {CHROME}...", flush=True)
     with ThreadPoolExecutor(max_workers=os.cpu_count() or 2) as pool:
         list(pool.map(render_frame, range(TOTAL_FRAMES)))
     got = len(os.listdir(FRAMES))
-    print(f"rendered {got} frames")
+    print(f"rendered {got} frames", flush=True)
     if got < TOTAL_FRAMES:
         missing = [i for i in range(TOTAL_FRAMES)
                    if not os.path.exists(os.path.join(FRAMES, f"{i:04d}.png"))]
-        print(f"retrying {len(missing)} missing frames")
+        print(f"retrying {len(missing)} missing frames", flush=True)
         for i in missing:
             render_frame(i)
+        still = [i for i in range(TOTAL_FRAMES)
+                 if not os.path.exists(os.path.join(FRAMES, f"{i:04d}.png"))]
+        if still:
+            raise SystemExit(f"renderer produced no output for {len(still)} frames "
+                             f"(first: {still[:5]}) - check CHROME_BIN={CHROME}")
 
     # thumbnail (2x for crispness, then down to YouTube's 1280x720 spec)
     thumb_big = os.path.join(OUT, "thumb_2x.png")
