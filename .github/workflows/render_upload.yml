@@ -1,0 +1,59 @@
+name: Render and upload a Kelvorix Digital video
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg chromium-browser fonts-liberation \
+            fonts-dejavu-core fonts-texgyre
+          pip install google-api-python-client google-auth google-auth-oauthlib
+
+      - name: Show renderer
+        run: |
+          which chromium-browser || which chromium || true
+          nproc
+
+      - name: Render the video
+        env:
+          CHROME_BIN: chromium-browser
+        run: python render/build_pilot.py
+
+      - name: Upload to YouTube
+        env:
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          python - <<'PY'
+          import sys, os
+          sys.path.insert(0, "scripts")
+          from upload_youtube import upload
+          upload("render/out/pilot.mp4", "render/pilot.json")
+          PY
+
+      - name: Keep the rendered file as an artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kelvorix-pilot
+          path: |
+            render/out/pilot.mp4
+            render/out/thumbnail.png
+          if-no-files-found: warn
+          retention-days: 14
