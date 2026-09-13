@@ -51,7 +51,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
 import slides as sl
-from tts_piper import synth
+from tts_edge import synth
 
 LEAD_IN = 0.6
 PAUSE = 0.4
