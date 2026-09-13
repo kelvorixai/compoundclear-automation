@@ -1,0 +1,62 @@
+{
+  "b2": {
+    "frames": 1473,
+    "size": [1920, 1080],
+    "vo": [["b2_l1.mp3", 600], ["b2_l2.mp3", 4600], ["b2_l3.mp3", 11168],
+           ["b2_l4.mp3", 24096], ["b2_l5.mp3", 38368], ["b2_l6.mp3", 54152]],
+    "youtube": {
+      "id": "kd02_three_followups",
+      "title": "The 3 Follow-Ups That Finish Any AI Draft",
+      "description": "What AI hands you first is a draft, not an answer. The people who get great results out of it don't write better first prompts - they send better second ones. These are the three follow-ups that fix most of what's wrong with a first draft, written out in full so you can paste them straight in.\n\n0:00 A draft, not an answer\n0:11 Follow-up one: cut it by 40%\n0:24 Follow-up two: re-tone it\n0:38 Follow-up three: challenge it\n0:54 Say what's wrong, not \"try again\"\n\nThe full 63-prompt library for email, spreadsheets, decks, reports and salary conversations:\nhttps://kelvorixdigital.myshopify.com\n\nEvery prompt is written out ready to paste, with brackets marked so you fill in your own details. No theory, no filler - the wording that holds up when the work goes to someone senior.\n\nThis video uses AI-assisted narration and visuals.\n\n#promptengineering #ai #productivity #chatgpt #claude",
+      "tags": ["prompt engineering", "ai at work", "chatgpt prompts", "claude ai",
+               "ai productivity", "editing with ai", "work smarter", "ai for professionals"],
+      "category_id": "27",
+      "privacy_status": "public",
+      "made_for_kids": false
+    }
+  },
+  "b3": {
+    "frames": 1346,
+    "size": [1920, 1080],
+    "vo": [["b3_l1.mp3", 600], ["b3_l2.mp3", 6520], ["b3_l3.mp3", 12080],
+           ["b3_l4.mp3", 29760], ["b3_l5.mp3", 40552], ["b3_l6.mp3", 49376]],
+    "youtube": {
+      "id": "kd03_context_pack",
+      "title": "Write This Once, Paste It Into Every AI Prompt",
+      "description": "Ninety percent of \"the AI doesn't get it\" is missing context that never changes: your role, who reads your work, the words your company uses, and how you write. Put it in one block, paste it at the top of anything that matters, and every prompt after it gets better.\n\nIncludes the one rule that removes most invented facts.\n\n0:00 Why it doesn't get it\n0:06 The context that never changes\n0:12 The block, written out\n0:29 The line that kills invented facts\n0:40 Where to paste it\n\nThe full 63-prompt library for email, spreadsheets, decks, reports and salary conversations:\nhttps://kelvorixdigital.myshopify.com\n\nEvery prompt is written out ready to paste, with brackets marked so you fill in your own details.\n\nThis video uses AI-assisted narration and visuals.\n\n#promptengineering #ai #productivity #chatgpt #claude",
+      "tags": ["prompt engineering", "context pack", "chatgpt prompts", "claude ai",
+               "ai hallucination", "ai productivity", "ai at work", "custom instructions"],
+      "category_id": "27",
+      "privacy_status": "public",
+      "made_for_kids": false
+    }
+  },
+  "s1": {
+    "frames": 360,
+    "size": [1080, 1920],
+    "vo": [["s1_l1.mp3", 450]],
+    "youtube": {
+      "id": "kd_s1_percentage",
+      "title": "Stop Telling AI To \"Make It Shorter\" #shorts",
+      "description": "\"Make it shorter\" gets you a 10% trim. \"Cut this by 40% without losing any of the points\" gets you a rewrite. A percentage is measurable. An adjective isn't.\n\nFull prompt library: https://kelvorixdigital.myshopify.com\n\nAI-assisted narration and visuals.\n\n#shorts #promptengineering #ai #chatgpt #productivity",
+      "tags": ["shorts", "prompt engineering", "chatgpt", "ai tips", "productivity"],
+      "category_id": "27",
+      "privacy_status": "public",
+      "made_for_kids": false
+    }
+  },
+  "s2": {
+    "frames": 360,
+    "size": [1080, 1920],
+    "vo": [["s2_l1.mp3", 450]],
+    "youtube": {
+      "id": "kd_s2_need_rule",
+      "title": "The One Line That Stops AI Inventing Numbers #shorts",
+      "description": "AI will invent a number and sound completely certain about it. Add this to your prompt: \"Don't invent numbers, names or dates. If you need one, write [NEED: what] and I'll fill it in.\" Now it asks instead of guessing.\n\nFull prompt library: https://kelvorixdigital.myshopify.com\n\nAI-assisted narration and visuals.\n\n#shorts #promptengineering #ai #chatgpt #hallucination",
+      "tags": ["shorts", "prompt engineering", "chatgpt", "ai hallucination", "ai tips"],
+      "category_id": "27",
+      "privacy_status": "public",
+      "made_for_kids": false
+    }
+  }
+}
