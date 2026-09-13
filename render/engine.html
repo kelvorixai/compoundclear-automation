@@ -1,0 +1,253 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:#05080f;
+  font-family:'TeX Gyre Heros','Helvetica','Poppins',sans-serif;-webkit-font-smoothing:antialiased}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;
+  background:radial-gradient(130% 100% at 22% 8%, #17325f 0%, #0d1c37 40%, #05080f 100%)}
+.layer{position:absolute;inset:0}
+#grid{background-image:
+   linear-gradient(rgba(120,165,225,.06) 1px,transparent 1px),
+   linear-gradient(90deg,rgba(120,165,225,.06) 1px,transparent 1px);
+  background-size:80px 80px}
+#bloom{background:radial-gradient(circle at 30% 42%, rgba(245,178,60,.20), transparent 58%)}
+#vig{box-shadow:inset 0 0 260px 90px rgba(0,0,0,.78)}
+#grain{opacity:.055;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>")}
+#content{position:absolute;inset:0;padding:120px 150px;display:flex;flex-direction:column;justify-content:center}
+
+.kicker{display:flex;align-items:center;gap:16px;margin-bottom:38px}
+.kicker i{display:block;width:46px;height:5px;border-radius:3px;background:#f5b23c;box-shadow:0 0 18px rgba(245,178,60,.8)}
+.kicker span{font-size:26px;letter-spacing:.32em;font-weight:700;color:#9db4d6;text-transform:uppercase}
+
+.line{font-size:92px;line-height:1.08;font-weight:700;color:#fff;letter-spacing:-2px;
+  text-shadow:0 6px 0 rgba(0,0,0,.45),0 24px 50px rgba(0,0,0,.8)}
+.line .gold{color:#ffc95c}
+.line .mint{color:#7fd4a8}
+.line.small{font-size:62px;letter-spacing:-1px}
+
+.brandmark{position:absolute;left:150px;bottom:86px;display:flex;align-items:center;gap:15px}
+.brandmark i{width:34px;height:34px;border-radius:50%;flex:none;border:6px solid #f5b23c;
+  border-right-color:#e07b6a;border-bottom-color:#8f7fe8;box-shadow:0 0 18px rgba(245,178,60,.5)}
+.brandmark span{font-size:23px;letter-spacing:.22em;font-weight:700;color:#94a9c8;text-transform:uppercase}
+
+/* five-part formula chips */
+#formula{position:absolute;left:150px;right:150px;top:50%;transform:translateY(-50%);
+  display:flex;gap:26px;justify-content:center}
+.chip{flex:1;max-width:300px;background:linear-gradient(180deg,#132542,#0c1a30);
+  border:2px solid #24406c;border-radius:20px;padding:34px 26px;text-align:center;
+  box-shadow:0 24px 50px rgba(0,0,0,.6)}
+.chip .letter{font-size:86px;font-weight:700;line-height:1;color:#ffc95c;
+  text-shadow:0 4px 0 #7d5310,0 0 34px rgba(245,178,60,.5)}
+.chip .name{margin-top:14px;font-size:29px;font-weight:700;color:#fff;letter-spacing:.5px}
+.chip .desc{margin-top:10px;font-size:21px;line-height:1.35;color:#93a9c9}
+.chip.on{border-color:#f5b23c;background:linear-gradient(180deg,#25406b,#132542)}
+
+/* before/after panels */
+#compare{position:absolute;left:150px;right:150px;top:50%;transform:translateY(-50%);display:flex;gap:44px}
+.panel{flex:1;border-radius:22px;padding:38px 36px;border:2px solid #24406c;
+  background:linear-gradient(180deg,rgba(19,37,66,.95),rgba(10,20,38,.95));box-shadow:0 26px 60px rgba(0,0,0,.65)}
+.panel h4{font-size:24px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:22px}
+.panel.bad h4{color:#e0806a}
+.panel.good h4{color:#7fd4a8}
+.panel p{font-size:30px;line-height:1.45;color:#d7e3f5;font-family:'DejaVu Sans Mono',monospace}
+.panel.bad{border-color:#5c3028}
+.panel.good{border-color:#2b6b4f}
+.verdict{margin-top:28px;padding-top:22px;border-top:1px solid rgba(255,255,255,.13);
+  font-size:25px;font-weight:700;letter-spacing:.2px}
+.verdict.bad-v{color:#e0806a}
+.verdict.good-v{color:#7fd4a8}
+
+#big{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column}
+#big .num{font-size:270px;font-weight:700;line-height:.9;color:#ffc95c;letter-spacing:-10px;
+  text-shadow:0 8px 0 #855310,0 16px 0 rgba(0,0,0,.5),0 36px 70px rgba(0,0,0,.8),0 0 90px rgba(245,178,60,.4)}
+#big .cap{margin-top:30px;font-size:52px;font-weight:700;color:#fff;text-align:center;letter-spacing:-.5px}
+</style></head>
+<body>
+<div id="stage">
+  <div class="layer" id="grid"></div>
+  <div class="layer" id="bloom"></div>
+  <div id="content"></div>
+  <div class="layer" id="vig"></div>
+  <div class="layer" id="grain"></div>
+  <div class="brandmark"><i></i><span id="brandname">Kelvorix Digital</span></div>
+</div>
+
+<script>
+const FPS = 24;
+const F = (() => { const m = location.search.match(/[?&]f=(\d+)/); return m ? +m[1] : 0; })();
+const T = F / FPS;
+
+/* ---------- easing + helpers ---------- */
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const easeOut = t => 1 - Math.pow(1 - clamp(t), 3);
+const easeInOut = t => (t=clamp(t)) < .5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
+// progress of local time within [start,dur]
+const P = (start, dur) => easeOut((T - start) / dur);
+const between = (a,b) => T >= a && T < b;
+
+function el(tag, cls, html){ const e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e; }
+
+/* entrance transform: rise + blur + fade, driven by p 0..1 */
+function enter(node, p, dy=54){
+  const e = clamp(p);
+  node.style.opacity = e;
+  node.style.transform = `translateY(${(1-e)*dy}px)`;
+  node.style.filter = `blur(${(1-e)*9}px)`;
+}
+/* exit: fade + slight lift */
+function exit(node, p, dy=-40){
+  const e = clamp(p);
+  node.style.opacity = 1-e;
+  node.style.transform = `translateY(${e*dy}px)`;
+  node.style.filter = `blur(${e*8}px)`;
+}
+
+/* slow parallax drift on the background so no frame is ever truly static */
+document.getElementById('grid').style.transform =
+  `translate(${Math.sin(T*0.25)*16}px, ${-T*7}px)`;
+document.getElementById('bloom').style.transform =
+  `translate(${Math.sin(T*0.18)*40}px, ${Math.cos(T*0.22)*26}px) scale(${1+Math.sin(T*0.3)*0.04})`;
+
+const content = document.getElementById('content');
+
+/* =======================================================================
+   SCENE SCRIPT — cut to Andrew's narration (measured, not guessed)
+   l1 0.600 | l2 3.784 | l3 8.792 | l4 29.616 | l5 40.024 | l6 53.984
+   ======================================================================= */
+const SCENES = [
+  {a:0.000,  b:3.684,  vo:0.600,  render:sceneHook},
+  {a:3.684,  b:8.692,  vo:3.784,  render:sceneWhy},
+  {a:8.692,  b:29.516, vo:8.792,  render:sceneFormula},
+  {a:29.516, b:39.924, vo:29.616, render:sceneCompare},
+  {a:39.924, b:53.884, vo:40.024, render:scenePayoff},
+  {a:53.884, b:58.660, vo:53.984, render:sceneEnd},
+];
+const S = SCENES.find(s => T >= s.a && T < s.b) || SCENES[SCENES.length-1];
+const LT = T - S.a;                 // local time within the scene
+const OUTW = 0.45;                  // exit wash length
+const outP = () => (LT - ((S.b - S.a) - OUTW)) / OUTW;
+const lp = (start, dur) => easeOut((LT - start) / dur);   // local progress
+
+function fadeOut(nodes){ const o = outP(); if(o > 0) nodes.forEach(n => exit(n, o)); }
+
+function sceneHook(){
+  const k  = el('div','kicker','<i></i><span>The prompting gap</span>');
+  const l1 = el('div','line','Most people use AI');
+  const l2 = el('div','line','like a <span class="gold">search box.</span>');
+  content.append(k,l1,l2);
+  enter(k,  lp(0.10,0.55), 26);
+  enter(l1, lp(0.45,0.70));
+  enter(l2, lp(0.80,0.70));
+  fadeOut([k,l1,l2]);
+}
+
+function sceneWhy(){
+  const l1 = el('div','line','One line in.');
+  const l2 = el('div','line','One <span class="mint">generic</span> answer out.');
+  const l3 = el('div','line small','Then twenty minutes fixing it.');
+  l3.style.marginTop='34px'; l3.style.color='#9db4d6';
+  content.append(l1,l2,l3);
+  enter(l1, lp(0.15,0.60));
+  enter(l2, lp(0.95,0.60));
+  enter(l3, lp(2.35,0.70));
+  fadeOut([l1,l2,l3]);
+}
+
+const CHIPS = [
+  ['R','Role','whose expertise to borrow'],
+  ['C','Context','what happened, what&rsquo;s at stake'],
+  ['T','Task','one verb, one deliverable'],
+  ['F','Format','length, structure, tone'],
+  ['X','eXamples','a sample, and what to avoid'],
+];
+function sceneFormula(){
+  const k = el('div','kicker','<i></i><span>The five-part prompt</span>');
+  k.style.position='absolute'; k.style.top='150px'; k.style.left='150px';
+  content.append(k); enter(k, lp(0.15,0.55), 22);
+
+  const row = el('div',null,''); row.id='formula';
+  content.append(row);
+  // narration names each part roughly every 3.6s after a ~2.3s intro
+  CHIPS.forEach((c,i)=>{
+    const chip = el('div','chip',
+      `<div class="letter">${c[0]}</div><div class="name">${c[1]}</div><div class="desc">${c[2]}</div>`);
+    row.append(chip);
+    const st = 2.30 + i*3.60;
+    const p  = clamp(lp(st, 0.70));
+    chip.style.opacity = p;
+    chip.style.transform = `translateY(${(1-p)*64}px) scale(${0.88+0.12*p})`;
+    // stays lit while that part is being spoken
+    if(LT >= st && LT < st + 3.30) chip.classList.add('on');
+  });
+  const o = outP();
+  if(o > 0){ exit(k,o); row.style.opacity = 1-clamp(o);
+    row.style.transform = `translateY(-50%) scale(${1-0.04*clamp(o)})`; }
+}
+
+function sceneCompare(){
+  const k = el('div','kicker','<i></i><span>Same task, two prompts</span>');
+  k.style.position='absolute'; k.style.top='150px'; k.style.left='150px';
+  content.append(k); enter(k, lp(0.15,0.55), 22);
+
+  const wrap = el('div',null,''); wrap.id='compare';
+  const bad = el('div','panel bad',
+    '<h4>Search-box prompt</h4><p>"write an email about the supplier delays"</p>'
+    + '<div class="verdict bad-v">&rarr; a generic paragraph you rewrite anyway</div>');
+  const good = el('div','panel good',
+    '<h4>Five-part prompt</h4><p>"You are a senior ops analyst writing for busy executives.<br><br>My director asked why supplier lead times slipped in Q3. Causes: factory fire, customs change, late PO approvals.<br><br>Write 150 words, conclusion first, three short paragraphs, no bullets. Don\'t apologise. Don\'t invent numbers."</p>'
+    + '<div class="verdict good-v">&rarr; sendable on the first pass</div>');
+  good.querySelector('p').style.fontSize='24px';
+  bad.style.display=good.style.display='flex';
+  bad.style.flexDirection=good.style.flexDirection='column';
+  bad.querySelector('p').style.flex=good.querySelector('p').style.flex='1';
+  wrap.append(bad,good); content.append(wrap);
+
+  const pb = clamp(lp(0.55,0.70)), pg = clamp(lp(4.30,0.80));
+  bad.style.opacity=pb;  bad.style.transform=`translateX(${(1-pb)*-64}px)`;
+  good.style.opacity=pg; good.style.transform=`translateX(${(1-pg)*64}px)`;
+  // the verdict lines land as the narration reaches them
+  bad.querySelector('.verdict').style.opacity  = clamp(lp(3.10,0.55));
+  good.querySelector('.verdict').style.opacity = clamp(lp(7.60,0.55));
+
+  const o = outP();
+  if(o > 0){ exit(k,o); wrap.style.opacity = 1-clamp(o); }
+}
+
+function scenePayoff(){
+  const box = el('div',null,''); box.id='big';
+  const src = el('div','cap','');
+  src.innerHTML = '<span style="color:#9db4d6;font-size:36px">Harvard / BCG study &middot; 758 professionals</span>';
+  src.style.marginTop='0'; src.style.marginBottom='26px';
+  const num = el('div','num','0%');
+  const cap = el('div','cap','higher-rated work.<br><span style="color:#7fd4a8">And 25% faster.</span>');
+  box.append(src,num,cap); content.append(box);
+
+  enter(src, lp(0.40,0.70), 26);
+  // "forty percent" lands ~8.6s into the line
+  const cp = clamp(easeOut((LT-8.20)/1.25));
+  num.textContent = Math.round(cp*40) + '%';
+  num.style.opacity = clamp((LT-8.10)/0.30);
+  num.style.transform = `scale(${0.84+0.16*cp})`;
+  cap.style.opacity = clamp(lp(10.10,0.65));
+  cap.style.transform = `translateY(${(1-clamp(lp(10.10,0.65)))*26}px)`;
+
+  const o = outP();
+  if(o > 0){ box.style.opacity = 1-clamp(o); box.style.transform = `scale(${1-0.03*clamp(o)})`; }
+}
+
+function sceneEnd(){
+  const l1 = el('div','line','Brief it like a <span class="gold">colleague,</span>');
+  const l2 = el('div','line','not a <span class="mint">search box.</span>');
+  const cta = el('div','line small','63 prompts that do this &rarr; Kelvorix Digital');
+  cta.style.marginTop='42px'; cta.style.color='#9db4d6'; cta.style.fontSize='40px';
+  content.append(l1,l2,cta);
+  enter(l1, lp(0.15,0.65));
+  enter(l2, lp(0.60,0.65));
+  enter(cta, lp(2.40,0.75));
+}
+
+S.render();
+
+document.title = 'f' + F;
+</script>
+</body></html>
