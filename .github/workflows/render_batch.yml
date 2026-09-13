@@ -1,0 +1,71 @@
+name: Render and upload (choose video)
+
+on:
+  workflow_dispatch:
+    inputs:
+      video:
+        description: "Which video to build (b2, b3, s1, s2)"
+        required: true
+        type: choice
+        options: [b2, b3, s1, s2]
+
+permissions:
+  contents: read
+
+env:
+  CHROME_BIN: google-chrome
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-liberation fonts-dejavu-core fonts-texgyre
+          pip install google-api-python-client google-auth google-auth-oauthlib
+
+      - name: Preflight - prove the renderer works first
+        run: |
+          google-chrome --version
+          google-chrome --headless --disable-gpu --no-sandbox --hide-scrollbars \
+            --screenshot=/tmp/pre.png --window-size=1920,1080 \
+            "file://$GITHUB_WORKSPACE/render/engine2.html?v=${{ inputs.video }}&f=100"
+          test -s /tmp/pre.png || { echo "renderer produced no PNG"; exit 1; }
+          echo "preflight OK: $(stat -c%s /tmp/pre.png) bytes"
+
+      - name: Render
+        run: python render/build2.py ${{ inputs.video }}
+
+      - name: Upload to YouTube
+        env:
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          VIDEO: ${{ inputs.video }}
+        run: |
+          python - <<'PY'
+          import sys, os
+          sys.path.insert(0, "scripts")
+          from upload_youtube import upload
+          vid = os.environ["VIDEO"]
+          upload(f"render/out/{vid}.mp4", "render/out/meta.json")
+          PY
+
+      - name: Keep the file
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kelvorix-${{ inputs.video }}
+          path: |
+            render/out/*.mp4
+            render/out/thumbnail.png
+          if-no-files-found: warn
+          retention-days: 14
