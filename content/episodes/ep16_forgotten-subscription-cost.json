@@ -1,0 +1,144 @@
+{
+  "id": "ep16_forgotten-subscription-cost",
+  "title": "That $13.99 Subscription You Forgot About Is Actually a $7,288 Decision",
+  "hook": "One forgotten thirteen-dollar-a-month subscription, invested instead over twenty years at a normal market return, turns into more than seven thousand dollars.",
+  "thumbnail_kicker": "OPPORTUNITY COST",
+  "thumbnail_text": "$14/MO BECOMES $7,288",
+  "format": "vertical",
+  "description": "A forgotten $13.99/month subscription feels too small to matter. Left alone for 20 years it's about $3,358 out of your pocket. Invested instead at a normal 7% average return, that same $13.99 a month becomes $7,287.76. We run the real compounding math on one easy-to-ignore recurring charge.\n\nThis video uses AI-generated narration and visuals.\n\n#Shorts #personalfinance #compoundinterest #savingmoney",
+  "tags": [
+    "subscriptions",
+    "opportunity cost",
+    "personal finance",
+    "compound interest",
+    "money",
+    "saving money",
+    "Shorts"
+  ],
+  "category_id": "27",
+  "privacy_status": "private",
+  "made_for_kids": false,
+  "segments": [
+    {
+      "id": 1,
+      "text": "A forgotten thirteen dollar and ninety nine cent subscription. Easy to ignore -- it's less than a coffee.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 2,
+      "text": "Over ten years, that's one thousand six hundred seventy eight dollars, paid out a few dollars at a time.",
+      "slide": {
+        "type": "bars",
+        "headline": "Total paid over time",
+        "labels": [
+          "5 years",
+          "10 years",
+          "20 years"
+        ],
+        "values": [
+          839.4,
+          1678.8,
+          3357.6
+        ],
+        "y_max": 3800
+      }
+    },
+    {
+      "id": 3,
+      "text": "Now instead of spending it, invest that same thirteen dollars and ninety nine cents every month, at a normal seven percent average return.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 4,
+      "text": "Twenty years later: seven thousand, two hundred eighty seven dollars. More than double what you would have paid out, from the same small amount.",
+      "slide": {
+        "type": "chart",
+        "headline": "$7,287.76",
+        "sub": "20 years - $13.99/month invested at 7%",
+        "points": [
+          [
+            0,
+            0.0
+          ],
+          [
+            2,
+            359.28
+          ],
+          [
+            4,
+            772.38
+          ],
+          [
+            6,
+            1247.36
+          ],
+          [
+            8,
+            1793.5
+          ],
+          [
+            10,
+            2421.46
+          ],
+          [
+            12,
+            3143.48
+          ],
+          [
+            14,
+            3973.67
+          ],
+          [
+            16,
+            4928.23
+          ],
+          [
+            18,
+            6025.79
+          ],
+          [
+            20,
+            7287.76
+          ]
+        ],
+        "mark": [
+          20,
+          7287.76
+        ],
+        "y_max": 8000,
+        "x_label": "Years",
+        "y_label": "Balance ($)"
+      }
+    },
+    {
+      "id": 5,
+      "text": "Same thirteen dollars and ninety nine cents, either way. The only difference is what happens to it after you spend it, or don't.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 6,
+      "text": "That's not a reason to cancel every subscription you own. It's a reason to actually notice what the small recurring ones cost.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 7,
+      "text": "It's not about the $13.99.",
+      "slide": {
+        "type": "closing",
+        "lines": [
+          "It's not about the $13.99.",
+          "It's about what it could have become."
+        ]
+      }
+    }
+  ],
+  "status": "ready"
+}
