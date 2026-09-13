@@ -1,0 +1,267 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow:hidden;background:#05080f;
+  font-family:'TeX Gyre Heros','Helvetica','Poppins',sans-serif;-webkit-font-smoothing:antialiased}
+#stage{position:relative;overflow:hidden;
+  background:radial-gradient(130% 100% at 22% 8%, #17325f 0%, #0d1c37 40%, #05080f 100%)}
+body.h,body.h #stage{width:1920px;height:1080px}
+body.v,body.v #stage{width:1080px;height:1920px}
+.layer{position:absolute;inset:0}
+#grid{background-image:
+   linear-gradient(rgba(120,165,225,.06) 1px,transparent 1px),
+   linear-gradient(90deg,rgba(120,165,225,.06) 1px,transparent 1px);background-size:80px 80px}
+#bloom{background:radial-gradient(circle at 30% 42%, rgba(245,178,60,.20), transparent 58%)}
+#vig{box-shadow:inset 0 0 260px 90px rgba(0,0,0,.78)}
+#grain{opacity:.055;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>")}
+#content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center}
+body.h #content{padding:120px 150px}
+body.v #content{padding:150px 80px;text-align:left}
+
+.kicker{display:flex;align-items:center;gap:16px;margin-bottom:38px}
+.kicker i{display:block;width:46px;height:5px;border-radius:3px;background:#f5b23c;box-shadow:0 0 18px rgba(245,178,60,.8)}
+.kicker span{font-size:26px;letter-spacing:.32em;font-weight:700;color:#9db4d6;text-transform:uppercase}
+body.v .kicker span{font-size:30px}
+
+.line{font-weight:700;color:#fff;letter-spacing:-2px;line-height:1.08;
+  text-shadow:0 6px 0 rgba(0,0,0,.45),0 24px 50px rgba(0,0,0,.8)}
+body.h .line{font-size:92px}
+body.v .line{font-size:104px;line-height:1.04;letter-spacing:-3px}
+.line .gold{color:#ffc95c}
+.line .mint{color:#7fd4a8}
+.line .red{color:#e0806a}
+.line.small{font-size:62px;letter-spacing:-1px}
+body.v .line.small{font-size:64px}
+.line.tiny{font-size:46px;letter-spacing:-.5px;color:#9db4d6}
+
+.brandmark{position:absolute;display:flex;align-items:center;gap:15px}
+body.h .brandmark{left:150px;bottom:86px}
+body.v .brandmark{left:80px;bottom:120px}
+.brandmark i{width:34px;height:34px;border-radius:50%;flex:none;border:6px solid #f5b23c;
+  border-right-color:#e07b6a;border-bottom-color:#8f7fe8;box-shadow:0 0 18px rgba(245,178,60,.5)}
+.brandmark span{font-size:23px;letter-spacing:.22em;font-weight:700;color:#94a9c8;text-transform:uppercase}
+
+/* prompt card — the recurring "here is the actual wording" object */
+.prompt{background:linear-gradient(180deg,rgba(19,37,66,.96),rgba(10,20,38,.96));
+  border:2px solid #2b6b4f;border-radius:22px;padding:36px 38px;
+  box-shadow:0 26px 60px rgba(0,0,0,.65)}
+.prompt .tag{font-size:23px;letter-spacing:.2em;text-transform:uppercase;color:#7fd4a8;margin-bottom:20px}
+.prompt p{font-family:'DejaVu Sans Mono',monospace;color:#d7e3f5;line-height:1.45}
+body.h .prompt p{font-size:33px}
+body.v .prompt p{font-size:37px}
+.prompt.warn{border-color:#5c3028}
+.prompt.warn .tag{color:#e0806a}
+
+.why{margin-top:26px;font-size:30px;color:#9db4d6;line-height:1.4}
+.why b{color:#ffc95c;font-weight:700}
+
+/* chips row */
+.chips{display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+.chip{flex:1;min-width:240px;max-width:330px;background:linear-gradient(180deg,#132542,#0c1a30);
+  border:2px solid #24406c;border-radius:20px;padding:30px 24px;text-align:center;
+  box-shadow:0 24px 50px rgba(0,0,0,.6)}
+.chip .nm{font-size:31px;font-weight:700;color:#fff}
+.chip .ds{margin-top:10px;font-size:21px;line-height:1.35;color:#93a9c9}
+.chip.on{border-color:#f5b23c;background:linear-gradient(180deg,#25406b,#132542)}
+
+/* big number */
+.bigwrap{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.num{font-weight:700;line-height:.9;color:#ffc95c;letter-spacing:-10px;
+  text-shadow:0 8px 0 #855310,0 16px 0 rgba(0,0,0,.5),0 36px 70px rgba(0,0,0,.8),0 0 90px rgba(245,178,60,.4)}
+body.h .num{font-size:250px}
+body.v .num{font-size:230px}
+.cap{margin-top:28px;font-size:50px;font-weight:700;color:#fff;text-align:center;letter-spacing:-.5px}
+
+/* two-bar compare */
+.bars{display:flex;align-items:flex-end;gap:70px;justify-content:center;height:340px}
+.bar{width:180px;border-radius:10px 10px 0 0;position:relative;
+  box-shadow:0 20px 44px rgba(0,0,0,.6)}
+.bar.a{background:linear-gradient(180deg,#54698c,#2b3b55)}
+.bar.b{background:linear-gradient(180deg,#ffd071,#b9791a)}
+.bar .lab{position:absolute;top:-56px;left:0;right:0;text-align:center;font-size:40px;font-weight:700}
+.bar.a .lab{color:#8ba2c4}
+.bar.b .lab{color:#ffc95c}
+.bar .foot{position:absolute;bottom:-54px;left:0;right:0;text-align:center;font-size:26px;color:#8ba2c4;letter-spacing:.06em;text-transform:uppercase}
+</style></head>
+<body>
+<div id="stage">
+  <div class="layer" id="grid"></div>
+  <div class="layer" id="bloom"></div>
+  <div id="content"></div>
+  <div class="layer" id="vig"></div>
+  <div class="layer" id="grain"></div>
+  <div class="brandmark"><i></i><span>Kelvorix Digital</span></div>
+</div>
+<script>
+const Q = new URLSearchParams(location.search);
+const V = Q.get('v') || 'b2';
+const F = +(Q.get('f') || 0);
+const FPS = 24, T = F / FPS;
+
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const easeOut = t => 1 - Math.pow(1 - clamp(t), 3);
+function el(tag, cls, html){ const e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e; }
+function enter(n,p,dy=54){const e=clamp(p);n.style.opacity=e;n.style.transform=`translateY(${(1-e)*dy}px)`;n.style.filter=`blur(${(1-e)*9}px)`;}
+function exit(n,p,dy=-40){const e=clamp(p);n.style.opacity=1-e;n.style.transform=`translateY(${e*dy}px)`;n.style.filter=`blur(${e*8}px)`;}
+
+document.getElementById('grid').style.transform=`translate(${Math.sin(T*.25)*16}px,${-T*7}px)`;
+document.getElementById('bloom').style.transform=
+  `translate(${Math.sin(T*.18)*40}px,${Math.cos(T*.22)*26}px) scale(${1+Math.sin(T*.3)*.04})`;
+const content = document.getElementById('content');
+
+/* ---------------- scene tables (cut to measured narration) ---------------- */
+const VIDEOS = {
+ b2:{vertical:false, scenes:[[0,4.500],[4.500,11.068],[11.068,23.996],[23.996,38.268],[38.268,54.052],[54.052,61.370]]},
+ b3:{vertical:false, scenes:[[0,6.420],[6.420,11.980],[11.980,29.660],[29.660,40.452],[40.452,49.276],[49.276,56.090]]},
+ s1:{vertical:true,  scenes:[[0,15.0]]},
+ s2:{vertical:true,  scenes:[[0,15.0]]},
+};
+const CFG = VIDEOS[V];
+document.body.className = CFG.vertical ? 'v' : 'h';
+
+let IDX = CFG.scenes.findIndex(s => T >= s[0] && T < s[1]);
+if (IDX < 0) IDX = CFG.scenes.length - 1;
+const [A,B] = CFG.scenes[IDX];
+const LT = T - A, LEN = B - A, OUTW = .45;
+const outP = () => (LT - (LEN - OUTW)) / OUTW;
+const lp = (s,d) => easeOut((LT - s)/d);
+const fade = ns => { const o = outP(); if(o>0) ns.forEach(n=>exit(n,o)); };
+
+function kicker(txt){
+  const k = el('div','kicker',`<i></i><span>${txt}</span>`);
+  k.style.position='absolute'; k.style.top = CFG.vertical?'190px':'150px';
+  k.style.left = CFG.vertical?'80px':'150px';
+  content.append(k); return k;
+}
+
+/* ============================ b2 — the follow-ups ============================ */
+const B2 = [
+ () => { const a=el('div','line','What AI hands you first'),
+               b=el('div','line','is a <span class="red">draft,</span> not an answer.');
+   content.append(a,b); enter(a,lp(.15,.65)); enter(b,lp(.60,.65)); fade([a,b]); },
+
+ () => { const a=el('div','line','People who get great results'),
+               b=el('div','line','don&rsquo;t write better <span class="mint">first</span> prompts.'),
+               c=el('div','line','They send better <span class="gold">second</span> ones.');
+   c.style.marginTop='26px';
+   content.append(a,b,c); enter(a,lp(.15,.6)); enter(b,lp(.9,.6)); enter(c,lp(2.9,.7)); fade([a,b,c]); },
+
+ () => { const k=kicker('Follow-up one &middot; tighten');
+   const p=el('div','prompt','<div class="tag">Say this</div><p>"Cut this by 40% without losing any of the points. Remove every sentence that restates something already said. Keep my tone."</p>');
+   const w=el('div','why','A percentage is <b>measurable</b>. &ldquo;Make it shorter&rdquo; gets a 10% trim. &ldquo;Cut by 40%&rdquo; gets a rewrite.');
+   content.append(p,w);
+   enter(k,lp(.15,.55),22); enter(p,lp(.55,.7)); enter(w,lp(6.6,.7));
+   const o=outP(); if(o>0){exit(k,o);exit(p,o);exit(w,o);} },
+
+ () => { const k=kicker('Follow-up two &middot; re-tone');
+   const p=el('div','prompt','<div class="tag">Say this</div><p>"Rewrite this so it sounds like a calm, senior person who is confident about the plan but not dismissive of the concern. Keep every fact exactly as it is."</p>');
+   const w=el('div','why','Tone lands as a <b>description of a person</b>, not a list of adjectives.');
+   content.append(p,w);
+   enter(k,lp(.15,.55),22); enter(p,lp(.55,.7)); enter(w,lp(8.4,.7));
+   const o=outP(); if(o>0){exit(k,o);exit(p,o);exit(w,o);} },
+
+ () => { const k=kicker('Follow-up three &middot; challenge');
+   const p=el('div','prompt','<div class="tag">Say this</div><p>"Act as the most sceptical person on the receiving end. List the three objections they&rsquo;d have, and tell me which one this draft doesn&rsquo;t answer."</p>');
+   const w=el('div','why','This turns the model from writer into <b>reviewer</b> &mdash; where it is most reliable. Use it before anything goes to someone senior.');
+   content.append(p,w);
+   enter(k,lp(.15,.55),22); enter(p,lp(.55,.7)); enter(w,lp(9.6,.7));
+   const o=outP(); if(o>0){exit(k,o);exit(p,o);exit(w,o);} },
+
+ () => { const a=el('div','line','Say what&rsquo;s <span class="gold">wrong.</span>'),
+               b=el('div','line','Not &ldquo;<span class="red">try again</span>.&rdquo;'),
+               c=el('div','line tiny','&ldquo;Try again&rdquo; gets you a random variation.');
+   c.style.marginTop='38px';
+   content.append(a,b,c); enter(a,lp(.15,.65)); enter(b,lp(.65,.65)); enter(c,lp(2.6,.7)); },
+];
+
+/* ============================ b3 — the context pack ============================ */
+const PACK = [
+ ['Your role','and who reads your work'],
+ ['Your vocabulary','the acronyms said daily'],
+ ['Your voice','3-4 lines you really wrote'],
+ ['Your rules','what it must never do'],
+];
+const B3 = [
+ () => { const a=el('div','line','Ninety percent of'),
+               b=el('div','line','&ldquo;the AI doesn&rsquo;t get it&rdquo;'),
+               c=el('div','line','is <span class="gold">missing context.</span>');
+   content.append(a,b,c); enter(a,lp(.15,.6)); enter(b,lp(.7,.6)); enter(c,lp(1.5,.65)); fade([a,b,c]); },
+
+ () => { const k=kicker('Context that never changes');
+   const row=el('div','chips','');
+   content.append(row);
+   PACK.forEach((p,i)=>{ const c=el('div','chip',`<div class="nm">${p[0]}</div><div class="ds">${p[1]}</div>`);
+     row.append(c); const q=clamp(lp(.45+i*.55,.6));
+     c.style.opacity=q; c.style.transform=`translateY(${(1-q)*50}px) scale(${.9+.1*q})`; });
+   enter(k,lp(.15,.55),22);
+   const o=outP(); if(o>0){exit(k,o); row.style.opacity=1-clamp(o);} },
+
+ () => { const k=kicker('Write it once');
+   const p=el('div','prompt','<div class="tag">Your context pack</div><p>ABOUT ME<br>- Role: [title], [team], at [company type].<br>- My audience: [who reads this]. They care about [what].<br>- My style: [how you write]. Sample: "[paste 3-4 lines you wrote]"<br><br>VOCABULARY<br>- [ACRONYM] = [meaning]. We call [thing] "[internal name]".</p>');
+   p.querySelector('p').style.fontSize='29px';
+   const w=el('div','why','A <b>real sample of your writing</b> does more for tone than any adjective you can think of.');
+   content.append(p,w);
+   enter(k,lp(.15,.55),22); enter(p,lp(.55,.75)); enter(w,lp(11.5,.7));
+   const o=outP(); if(o>0){exit(k,o);exit(p,o);exit(w,o);} },
+
+ () => { const k=kicker('The line that kills invented facts');
+   const p=el('div','prompt','<div class="tag">Add this rule</div><p>"Don&rsquo;t invent numbers, names, dates or policies. If you need one, write [NEED: what] and I&rsquo;ll fill it in."</p>');
+   const w=el('div','why','The <b>NEED placeholder</b> alone removes most hallucinated facts.');
+   content.append(p,w);
+   enter(k,lp(.15,.55),22); enter(p,lp(.5,.7)); enter(w,lp(6.2,.7));
+   const o=outP(); if(o>0){exit(k,o);exit(p,o);exit(w,o);} },
+
+ () => { const a=el('div','line','Paste it at the top'),
+               b=el('div','line','of anything <span class="gold">that matters.</span>'),
+               c=el('div','line tiny','In tools with memory, paste it once and it applies to everything after.');
+   c.style.marginTop='36px';
+   content.append(a,b,c); enter(a,lp(.15,.6)); enter(b,lp(.7,.6)); enter(c,lp(3.4,.7)); fade([a,b,c]); },
+
+ () => { const a=el('div','line','One block.'),
+               b=el('div','line','Written <span class="mint">once.</span>'),
+               c=el('div','line small','Every prompt after it is better.');
+   c.style.marginTop='34px'; c.style.color='#9db4d6';
+   content.append(a,b,c); enter(a,lp(.15,.6)); enter(b,lp(.6,.6)); enter(c,lp(1.9,.7)); },
+];
+
+/* ============================ shorts ============================ */
+const S1 = [ () => {
+  const a=el('div','line','Stop telling AI');
+  const b=el('div','line','to &ldquo;<span class="red">make it shorter</span>.&rdquo;');
+  content.append(a,b); enter(a,lp(.25,.55)); enter(b,lp(.7,.55));
+
+  const bars=el('div','bars','');
+  bars.style.marginTop='90px';
+  const b1=el('div','bar a','<div class="lab">10%</div><div class="foot">shorter</div>');
+  const b2=el('div','bar b','<div class="lab">40%</div><div class="foot">cut by 40%</div>');
+  bars.append(b1,b2); content.append(bars);
+  const g1=clamp(lp(2.6,.8)), g2=clamp(lp(5.6,.9));
+  b1.style.height=(70*g1)+'px'; b1.style.opacity=g1?1:0;
+  b2.style.height=(300*g2)+'px'; b2.style.opacity=g2?1:0;
+
+  const p=el('div','prompt','<div class="tag">Say this instead</div><p>"Cut this by 40% without losing any of the points."</p>');
+  p.style.marginTop='120px';
+  content.append(p); enter(p,lp(5.4,.7));
+
+  const w=el('div','line small','A percentage is measurable.<br><span class="gold">An adjective isn&rsquo;t.</span>');
+  w.style.marginTop='70px'; content.append(w); enter(w,lp(10.4,.7));
+}];
+
+const S2 = [ () => {
+  const a=el('div','line','AI will invent');
+  const b=el('div','line','a number &mdash; and sound');
+  const c=el('div','line','<span class="red">completely sure.</span>');
+  content.append(a,b,c); enter(a,lp(.25,.55)); enter(b,lp(.65,.55)); enter(c,lp(1.05,.55));
+
+  const p=el('div','prompt','<div class="tag">One line stops it</div><p>"Don&rsquo;t invent numbers, names or dates. If you need one, write [NEED: what] and I&rsquo;ll fill it in."</p>');
+  p.style.marginTop='110px';
+  content.append(p); enter(p,lp(4.6,.75));
+
+  const w=el('div','line small','Now it <span class="mint">asks</span><br>instead of guessing.');
+  w.style.marginTop='90px'; content.append(w); enter(w,lp(10.6,.7));
+}];
+
+({b2:B2, b3:B3, s1:S1, s2:S2})[V][IDX]();
+document.title = V + '-' + F;
+</script>
+</body></html>
