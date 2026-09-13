@@ -1,0 +1,145 @@
+{
+  "id": "ep14_contribution-timing",
+  "title": "The $40,000 Difference Between Contributing in January and December",
+  "hook": "Contributing on January 1st instead of December 31st, every year for thirty years, adds nearly forty thousand dollars to a retirement account -- same $6,000 a year, same 7% return, nothing else changed.",
+  "thumbnail_kicker": "SAME MONEY, SAME RATE",
+  "thumbnail_text": "A $40K TIMING GAP",
+  "description": "$6,000 a year, invested at 7%, for thirty years. Contribute every December and you get one number. Contribute every January instead -- same amount, same rate, same total money in -- and you get nearly $40,000 more. We run the real math on why contribution timing alone changes the outcome, and how much bigger that gap gets the longer you run it.\n\nThis video uses AI-generated narration and visuals.\n\n#compoundinterest #investing #personalfinance",
+  "tags": [
+    "compound interest",
+    "investing",
+    "personal finance",
+    "money",
+    "financial literacy",
+    "retirement savings"
+  ],
+  "category_id": "27",
+  "privacy_status": "private",
+  "made_for_kids": false,
+  "segments": [
+    {
+      "id": 1,
+      "text": "Same six thousand dollars a year. Same seven percent return. Contribute it every January, or every December -- that sounds like a scheduling detail, not a real choice.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 2,
+      "text": "It isn't. Contribute at the start of the year and that year's six thousand dollars gets twelve extra months to grow before the next deposit goes in. Contribute at the end, and it gets zero.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 3,
+      "text": "Run both for thirty years. Same six thousand a year, same seven percent return, same total money in: one hundred eighty thousand dollars, either way.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 4,
+      "text": "Contributing every December, that grows to five hundred sixty six thousand, seven hundred sixty four dollars.",
+      "slide": {
+        "type": "chart",
+        "headline": "$566,764.72",
+        "sub": "30 years - contributing every December",
+        "points": [
+          [
+            0,
+            0.0
+          ],
+          [
+            5,
+            34504.43
+          ],
+          [
+            10,
+            82898.69
+          ],
+          [
+            15,
+            150774.13
+          ],
+          [
+            20,
+            245972.95
+          ],
+          [
+            25,
+            379494.23
+          ],
+          [
+            30,
+            566764.72
+          ]
+        ],
+        "mark": [
+          30,
+          566764.72
+        ],
+        "y_max": 650000,
+        "x_label": "Years",
+        "y_label": "Balance ($)"
+      }
+    },
+    {
+      "id": 5,
+      "text": "Contributing every January instead: six hundred six thousand, four hundred thirty eight dollars. Same contributions, same rate, thirty nine thousand, six hundred seventy three dollars more.",
+      "slide": {
+        "type": "bars",
+        "headline": "Same $180,000 contributed. Different balance.",
+        "labels": [
+          "Contribute in December",
+          "Contribute in January"
+        ],
+        "values": [
+          566764.72,
+          606438.25
+        ],
+        "y_max": 650000
+      }
+    },
+    {
+      "id": 6,
+      "text": "That gap comes from nothing but the month you send the same check. And it isn't a one-time quirk of thirty years -- it keeps growing the longer the money compounds.",
+      "slide": {
+        "type": "statement"
+      }
+    },
+    {
+      "id": 7,
+      "text": "After ten years the gap is under six thousand dollars. After forty, it's over eighty three thousand. The longer you run it, the more timing is worth.",
+      "slide": {
+        "type": "bars",
+        "headline": "The timing gap gets bigger the longer you run it",
+        "labels": [
+          "10 yrs",
+          "20 yrs",
+          "30 yrs",
+          "40 yrs"
+        ],
+        "values": [
+          5802.91,
+          17218.11,
+          39673.53,
+          83846.75
+        ],
+        "y_max": 90000
+      }
+    },
+    {
+      "id": 8,
+      "text": "Same contribution. Same rate. Twelve months of head start still compounds.",
+      "slide": {
+        "type": "closing",
+        "lines": [
+          "Same contribution. Same rate.",
+          "Twelve months of head start still compounds."
+        ]
+      }
+    }
+  ],
+  "status": "ready"
+}
