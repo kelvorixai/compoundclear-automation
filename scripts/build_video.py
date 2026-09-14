@@ -19,7 +19,7 @@ Episode JSON shape (see content/episodes/ep01_compound-interest.json):
                           # Everything else about the schema is identical.
   "hook": "...",          # optional -- a punchy one-line tease spoken as the
                           # very first thing in the video (replacing the
-                          # generic "CompoundClear." cold open) so a viewer
+                          # generic "Kelvorix Digital." cold open) so a viewer
                           # who just clicked in from the thumbnail hears the
                           # specific reason they clicked, immediately. Falls
                           # back to the old brand-only intro if omitted.
@@ -64,8 +64,8 @@ ZOOM_MAX = 1.08
 # live here (not in per-episode JSON) and apply automatically to all future
 # episodes. INTRO_TEXT is now only a fallback -- an episode's own "hook"
 # field (see module docstring) replaces it when present.
-INTRO_TEXT = "CompoundClear."
-OUTRO_TEXT = "If this was useful, subscribe to CompoundClear for more of the math behind money."
+INTRO_TEXT = "Kelvorix Digital."
+OUTRO_TEXT = "If that was useful, subscribe. New ones every Tuesday and Friday, and the free twelve-prompt guide is in the description."
 
 def run(cmd):
     print("+", " ".join(cmd))

@@ -1,5 +1,5 @@
 """
-CompoundClear branded slide rendering.
+Kelvorix Digital branded slide rendering.
 
 Generic primitives so future episodes (any topic) can be authored as data
 (content/episodes/*.json) instead of new Python code:
@@ -34,9 +34,9 @@ SANS = f"{FONT_DIR}/LiberationSans-Regular.ttf"
 SANS_BOLD = f"{FONT_DIR}/LiberationSans-Bold.ttf"
 
 W, H = 1920, 1080
-WORDMARK = "COMPOUNDCLEAR"
-BRAND = "CompoundClear"
-TAGLINE = "Plain-English guides to how money actually works"
+WORDMARK = "KELVORIX DIGITAL"
+BRAND = "Kelvorix Digital"
+TAGLINE = "Use AI properly at work"
 
 # Charts are rendered at one of these fixed figure sizes, then scaled to
 # fit whatever the current canvas is -- see _finish_chart_canvas. A wide
@@ -257,7 +257,7 @@ def outro_slide(path):
     d.text(((W - w_) // 2, cy + 168), TAGLINE, font=f3, fill=INK_SOFT)
 
     f4 = ImageFont.truetype(SANS_BOLD, 40)
-    cta = "Subscribe for more"
+    cta = "Subscribe \u2014 new videos Tue & Fri"
     w_ = d.textlength(cta, font=f4)
     d.text(((W - w_) // 2, cy + 240), cta, font=f4, fill=PEACH)
 

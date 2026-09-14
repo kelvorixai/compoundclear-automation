@@ -1,5 +1,5 @@
 """
-Uploads a finished MP4 to the CompoundClear YouTube channel via the
+Uploads a finished MP4 to the Kelvorix Digital YouTube channel via the
 YouTube Data API v3, and sets its custom thumbnail if build_video.py
 produced one alongside it.
 
@@ -37,6 +37,18 @@ def get_service():
         scopes=SCOPES,
     )
     return build("youtube", "v3", credentials=creds)
+
+# Appended to every episode description at upload time, so it applies to all
+# FUTURE uploads without editing any episode JSON. Videos already published
+# are deliberately left alone. Aziz asked for this on 14 Sep 2026.
+DESCRIPTION_FOOTER = (
+    "\n\n---\n"
+    "SUBSCRIBE for one short, practical AI-at-work video every Tuesday and Friday.\n\n"
+    "Free: 12 work prompts that actually work (PDF, no card)\n"
+    "https://kelvorixdigital.lemonsqueezy.com/checkout/buy/"
+    "2a95cbaf-fd7e-4e28-908e-ccf98199c508?utm_source=youtube&utm_medium=description\n\n"
+    "The full playbooks: https://kelvorixdigital.lemonsqueezy.com"
+)
 
 def set_thumbnail(youtube, video_id, video_path):
     """build_video.py writes a custom 1280x720 thumbnail.png next to the
@@ -83,7 +95,7 @@ def upload(video_path, episode_path):
     body = {
         "snippet": {
             "title": ep["title"],
-            "description": ep["description"],
+            "description": ep["description"] + DESCRIPTION_FOOTER,
             "tags": ep.get("tags", []),
             "categoryId": ep.get("category_id", "27"),  # 27 = Education
         },
