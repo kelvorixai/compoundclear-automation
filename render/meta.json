@@ -58,5 +58,90 @@
       "privacy_status": "public",
       "made_for_kids": false
     }
+  },
+  "b4": {
+      "frames": 2032,
+      "size": [
+          1920,
+          1080
+      ],
+      "vo": [
+          [
+              "b4_l1.mp3",
+              600
+          ],
+          [
+              "b4_l2.mp3",
+              8658
+          ],
+          [
+              "b4_l3.mp3",
+              30780
+          ],
+          [
+              "b4_l4.mp3",
+              37446
+          ],
+          [
+              "b4_l5.mp3",
+              48936
+          ],
+          [
+              "b4_l6.mp3",
+              62706
+          ],
+          [
+              "b4_l7.mp3",
+              75132
+          ]
+      ],
+      "youtube": {
+          "id": "kd04_honest_feedback",
+          "title": "Why AI Says Your Draft Is Great (And How to Make It Honest)",
+          "description": "AI says your draft is great because it was trained on human ratings, and people rate a yes higher. Ask for the weakest sentence instead of a verdict and you get an editor, not a fan.\n\nFree: 12 work prompts that actually work (PDF) → https://kelvorixdigital.lemonsqueezy.com/checkout/buy/2a95cbaf-fd7e-4e28-908e-ccf98199c508?utm_source=youtube&utm_medium=video&utm_campaign=honest-feedback\n\nThe full 63-prompt guide, Prompt Your Way Up ($19) → https://kelvorixdigital.lemonsqueezy.com/checkout/buy/ffb015dd-7060-4233-b803-63a474a7c426?utm_source=youtube&utm_medium=video&utm_campaign=honest-feedback\n\nThe exact setup block that turns AI into an honest coach (no score above 7 on a first attempt, name the weakest sentence, one fix per retry) is in Rehearsed, part of The Career Trio, 3 PDFs ($39) → https://kelvorixdigital.lemonsqueezy.com/checkout/buy/b48f8747-c96b-4dda-b87a-f12510eefb9c?utm_source=youtube&utm_medium=video&utm_campaign=honest-feedback\n\n0:00 It always says yes\n0:08 Where the yes comes from (Sharma et al., 2023)\n0:30 The fix\n0:37 Rule one: never ask yes or no\n0:48 Rule two: a reader with a reason to say no\n1:02 Rule three: cap the praise\n1:15 An editor, not a fan\n\nSource: Sharma et al., \"Towards Understanding Sycophancy in Language Models\", 2023 (Anthropic; ICLR 2024). Five state-of-the-art assistants consistently showed sycophancy, and both people and preference models sometimes preferred a convincingly written agreeable answer over a correct one.\n\nScripts and narration are AI-assisted.\n\n#promptengineering #ai #chatgpt #productivity #aiatwork",
+          "tags": [
+              "prompt engineering",
+              "ai at work",
+              "chatgpt prompts",
+              "claude ai",
+              "ai feedback",
+              "sycophancy",
+              "ai flattery",
+              "honest feedback",
+              "ai for professionals",
+              "ai writing"
+          ],
+          "category_id": "27",
+          "privacy_status": "public",
+          "made_for_kids": false
+      }
+  },
+  "s3": {
+      "frames": 360,
+      "size": [
+          1080,
+          1920
+      ],
+      "vo": [
+          [
+              "s3_l1.mp3",
+              450
+          ]
+      ],
+      "youtube": {
+          "id": "kd_s3_weakest_sentence",
+          "title": "Never Ask AI \"Is This Good?\" (Ask This Instead) #shorts",
+          "description": "AI was trained on human ratings, and people rate a yes higher. So \"is this good?\" always gets a yes. Ask \"what's the weakest sentence, and why?\" and it has to pick one. An editor, not a fan.\n\nFree: 12 work prompts that actually work (PDF) → https://kelvorixdigital.lemonsqueezy.com/checkout/buy/2a95cbaf-fd7e-4e28-908e-ccf98199c508?utm_source=youtube&utm_medium=video&utm_campaign=honest-feedback-short\n\nThe full 63-prompt guide, Prompt Your Way Up ($19) → https://kelvorixdigital.lemonsqueezy.com/checkout/buy/ffb015dd-7060-4233-b803-63a474a7c426?utm_source=youtube&utm_medium=video&utm_campaign=honest-feedback-short\n\nScripts and narration are AI-assisted.\n\n#shorts #promptengineering #ai #chatgpt #productivity",
+          "tags": [
+              "shorts",
+              "prompt engineering",
+              "chatgpt",
+              "ai tips",
+              "ai feedback"
+          ],
+          "category_id": "27",
+          "privacy_status": "public",
+          "made_for_kids": false
+      }
   }
 }
