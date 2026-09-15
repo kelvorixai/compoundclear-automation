@@ -80,9 +80,16 @@ def main():
             raise SystemExit(f"no output for {len(still)} frames (first {still[:5]}) "
                              f"- check CHROME_BIN={CHROME}")
 
-    # thumbnail: reuse a representative frame's layout at 1280x720 for landscape;
-    # for shorts YouTube uses the vertical frame itself, so grab an early frame.
-    thumb_src = os.path.join(frames, f"{int(total*0.45):04d}.png")
+    # thumbnail: engine2.html?v=<id>&thumb=1 renders a designed 1920x1080 card
+    # (huge type + the video's key object) when the video defines one; fall back
+    # to a representative frame if it produced nothing.
+    thumb_src = os.path.join(out, "thumb_src.png")
+    shot(f"file://{HERE}/engine2.html?v={vid}&thumb=1", thumb_src, 1920, 1080)
+    if not (os.path.exists(thumb_src) and os.path.getsize(thumb_src) > 0):
+        print("designed thumbnail missing, using a frame", flush=True)
+        thumb_src = os.path.join(frames, f"{int(total*0.45):04d}.png")
+    else:
+        print("designed thumbnail rendered", flush=True)
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", thumb_src,
                     "-vf", "scale=1280:720:force_original_aspect_ratio=decrease,"
                            "pad=1280:720:(ow-iw)/2:(oh-ih)/2:color=#05080f",
