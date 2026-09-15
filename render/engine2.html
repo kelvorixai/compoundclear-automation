@@ -82,6 +82,64 @@ body.v .num{font-size:230px}
 .bar.a .lab{color:#8ba2c4}
 .bar.b .lab{color:#ffc95c}
 .bar .foot{position:absolute;bottom:-54px;left:0;right:0;text-align:center;font-size:26px;color:#8ba2c4;letter-spacing:.06em;text-transform:uppercase}
+
+/* ---------- batch 2 components ---------- */
+.chat{display:flex;flex-direction:column;gap:26px}
+.bub{max-width:1340px;padding:26px 40px;border-radius:30px;font-size:44px;line-height:1.28;font-weight:700;
+  box-shadow:0 22px 50px rgba(0,0,0,.6);position:relative}
+body.v .bub{font-size:46px;max-width:880px;padding:26px 36px}
+.bub.u{align-self:flex-end;background:linear-gradient(180deg,#3a6de0,#2a53b8);color:#fff;border-bottom-right-radius:8px}
+.bub.a{align-self:flex-start;background:linear-gradient(180deg,#1b2b47,#12203a);border:2px solid #2c4874;color:#e8f0ff;border-bottom-left-radius:8px}
+.bub .caret{display:inline-block;width:5px;height:.95em;background:#ffc95c;vertical-align:-.12em;margin-left:6px}
+.bub .tu{display:inline-block;width:1.05em;height:1.05em;vertical-align:-.18em;margin-left:14px;fill:#ffc95c;filter:drop-shadow(0 0 12px rgba(245,178,60,.7))}
+.stamp{position:absolute;right:-30px;top:-34px;padding:10px 22px;border:5px solid #e0806a;color:#e0806a;border-radius:14px;
+  font-size:30px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transform:rotate(-8deg);background:rgba(5,8,15,.6)}
+.who{font-size:24px;letter-spacing:.18em;text-transform:uppercase;color:#7f95b8;margin-bottom:10px;font-weight:700}
+/* rating cards (scene 2) */
+.rate{display:flex;gap:40px;align-items:stretch}
+.rc{flex:1;background:linear-gradient(180deg,#132542,#0c1a30);border:2px solid #24406c;border-radius:22px;padding:34px 38px;
+  box-shadow:0 24px 50px rgba(0,0,0,.6);position:relative}
+.rc .rt{font-size:38px;line-height:1.3;color:#e6eefc;font-weight:700}
+.rc .rt.mono{font-family:'DejaVu Sans Mono',monospace;font-weight:400;font-size:33px;color:#d7e3f5}
+.rc.win{border-color:#f5b23c;background:linear-gradient(180deg,#25406b,#132542)}
+.rc .pick{margin-top:28px;display:flex;align-items:center;gap:16px;font-size:27px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#ffc95c;transform-origin:left center}
+.rc .pick .tu{width:54px;height:54px;margin:0}
+.rc .pick.dim{color:#7f95b8}
+.rc .pick.dim .tu{fill:#4d6285;filter:none;transform:rotate(180deg)}
+.cite{font-size:24px;color:#7f95b8;line-height:1.4;margin-top:30px}
+.cite b{color:#9db4d6;font-weight:700}
+/* five assistants */
+.five{display:flex;gap:22px}
+.as{flex:1;background:linear-gradient(180deg,#132542,#0c1a30);border:2px solid #24406c;border-radius:20px;padding:28px 18px;text-align:center;
+  box-shadow:0 24px 50px rgba(0,0,0,.6)}
+.as .nm{font-size:27px;font-weight:700;color:#fff}
+.as .st{margin-top:16px;display:inline-block;padding:8px 18px;border-radius:999px;font-size:23px;font-weight:700;letter-spacing:.06em;
+  background:rgba(224,128,106,.16);border:2px solid #e0806a;color:#e0806a}
+/* score meter (scene 6) */
+.score{display:flex;gap:14px;align-items:flex-end;height:150px}
+.seg{flex:1;height:110px;border-radius:12px;background:#0a1425;border:2px solid #24406c;position:relative}
+.seg i{position:absolute;left:0;right:0;bottom:0;border-radius:10px;background:linear-gradient(180deg,#ffd071,#c98a22);box-shadow:0 0 18px rgba(245,178,60,.6)}
+.seg.no{border-color:#5c3028;border-style:dashed}
+.seg .n{position:absolute;left:0;right:0;bottom:-46px;text-align:center;font-size:26px;color:#8ba2c4;font-weight:700}
+.seg.no .n{color:#e0806a}
+.capline{position:relative;height:60px;margin-top:60px}
+.capline .cap1{position:absolute;font-size:30px;font-weight:700;color:#e0806a;letter-spacing:.06em;white-space:nowrap}
+.capline .cap0{position:absolute;font-size:30px;font-weight:700;color:#ffc95c;letter-spacing:.06em;white-space:nowrap}
+.sx{position:relative;display:inline-block}
+.strike{position:absolute;left:-8px;right:-8px;top:50%;height:8px;margin-top:-4px;background:#e0806a;border-radius:4px;transform-origin:left center;box-shadow:0 0 16px rgba(224,128,106,.7)}
+/* thumbnails */
+body.t #content{padding:110px 130px;justify-content:center}
+.th{display:flex;align-items:center;gap:60px}
+.th .big{font-weight:700;color:#fff;letter-spacing:-6px;line-height:.9;font-size:188px;flex:none;
+  text-shadow:0 10px 0 rgba(0,0,0,.55),0 30px 60px rgba(0,0,0,.85)}
+.th .big .gold{color:#ffc95c;text-shadow:0 10px 0 #855310,0 30px 60px rgba(0,0,0,.85),0 0 80px rgba(245,178,60,.35)}
+.th .big .red{color:#e0806a}
+.th .side{flex:1;min-width:0}
+.th .bub{font-size:50px;max-width:none;padding:28px 40px}
+.th .cross{position:absolute;inset:-22px -8px;pointer-events:none}
+.th .cross:before,.th .cross:after{content:'';position:absolute;left:50%;top:50%;width:118%;height:14px;background:#e0806a;border-radius:7px;
+  box-shadow:0 0 24px rgba(224,128,106,.8);transform:translate(-50%,-50%) rotate(-18deg)}
+.th .cross:after{transform:translate(-50%,-50%) rotate(18deg)}
 </style></head>
 <body>
 <div id="stage">
@@ -115,9 +173,12 @@ const VIDEOS = {
  b3:{vertical:false, scenes:[[0,6.420],[6.420,11.980],[11.980,29.660],[29.660,40.452],[40.452,49.276],[49.276,56.090]]},
  s1:{vertical:true,  scenes:[[0,15.0]]},
  s2:{vertical:true,  scenes:[[0,15.0]]},
+ b4:{vertical:false, scenes:[[0.000,8.058],[8.058,30.180],[30.180,36.846],[36.846,48.336],[48.336,62.106],[62.106,74.532],[74.532,84.628]]},
+ s3:{vertical:true,  scenes:[[0,15.0]]},
 };
 const CFG = VIDEOS[V];
-document.body.className = CFG.vertical ? 'v' : 'h';
+const THUMB = Q.get('thumb') === '1';
+document.body.className = THUMB ? 'h t' : (CFG.vertical ? 'v' : 'h');
 
 let IDX = CFG.scenes.findIndex(s => T >= s[0] && T < s[1]);
 if (IDX < 0) IDX = CFG.scenes.length - 1;
@@ -261,7 +322,143 @@ const S2 = [ () => {
   w.style.marginTop='90px'; content.append(w); enter(w,lp(10.6,.7));
 }];
 
-({b2:B2, b3:B3, s1:S1, s2:S2})[V][IDX]();
+
+/* ============================ b4 — why AI flatters you ============================ */
+const TU = '<svg class="tu" viewBox="0 0 24 24"><path d="M2 10h4v11H2zM22 11c0-1.1-.9-2-2-2h-5.3l.9-4.3v-.3c0-.4-.2-.8-.4-1.1L14.2 2 8.6 7.6C8.2 8 8 8.5 8 9v9c0 1.1.9 2 2 2h8c.8 0 1.5-.5 1.8-1.2l2.1-6.6c.1-.2.1-.5.1-.7v-.5z"/></svg>';
+function typed(text, p, extra=''){ const n=Math.floor(clamp(p)*text.length); return text.slice(0,n) + (p<1 ? '<span class="caret"></span>' : extra); }
+
+const B4 = [
+ /* 1 — cold open: the chat that always says yes */
+ () => { const ch=el('div','chat','');
+   const u=el('div','bub u','Is this good?'), a=el('div','bub a','');
+   a.innerHTML = typed('Yes! This is clear, professional and well-structured.', lp(4.9,1.2), TU);
+   ch.append(u,a); content.append(ch);
+   enter(u,lp(.4,.5),40); enter(a,lp(4.75,.4),40);
+   const c=el('div','line','Almost <span class="gold">every</span> time.');
+   c.style.marginTop='70px'; content.append(c); enter(c,lp(6.35,.5));
+   fade([ch,c]); },
+
+ /* 2 — the training: ratings, then the five assistants */
+ () => { const SW = 9.2;   // switch from "ratings" to "five assistants"
+   if (LT < SW) {
+     const k=kicker('Where the yes comes from');
+     const row=el('div','rate','');
+     const r1=el('div','rc win',`<div class="who">Answer A</div><div class="rt">"Yes, this is great. Nicely done!"</div><div class="pick">${TU}<span>more likely to be preferred</span></div>`);
+     const r2=el('div','rc',`<div class="who">Answer B</div><div class="rt">"The second paragraph doesn't say what you want them to do."</div><div class="pick dim">${TU}<span>less likely</span></div>`);
+     row.append(r1,r2); content.append(row);
+     const t=el('div','line small','Trained on millions of <span class="gold">human ratings.</span>');
+     t.style.marginTop='60px'; content.append(t);
+     enter(k,lp(.4,.5),22); enter(r1,lp(3.1,.6)); enter(r2,lp(3.5,.6)); enter(t,lp(4.1,.6));
+     const g1=clamp(lp(6.6,.5)), g2=clamp(lp(7.2,.5));
+     const k1=r1.querySelector('.pick'), k2=r2.querySelector('.pick');
+     k1.style.opacity=g1; k1.style.transform=`scale(${.7+.3*g1})`; k2.style.opacity=g2*.9; k2.style.transform=`scale(${.7+.3*g2})`;
+     const o=(LT-(SW-.45))/.45; if(o>0){exit(k,o);exit(row,o);exit(t,o);}
+   } else {
+     const L2 = LT - SW;
+     const h=el('div','line small','In 2023, Anthropic researchers tested <span class="gold">five</span> leading assistants.');
+     h.style.marginBottom='44px'; content.append(h); enter(h,easeOut((L2-.4)/.6));
+     const row=el('div','five','');
+     for(let i=0;i<5;i++){ const c=el('div','as',`<div class="nm">Assistant ${i+1}</div><div class="st">flatters</div>`);
+       row.append(c); const q=clamp(easeOut((L2-3.2-i*.35)/.5)); c.style.opacity=q; c.style.transform=`translateY(${(1-q)*50}px) scale(${.9+.1*q})`;
+       const s=c.querySelector('.st'); const q2=clamp(easeOut((L2-6.3-i*.3)/.35)); s.style.opacity=q2; s.style.transform=`scale(${.6+.4*q2})`; }
+     content.append(row);
+     const t=el('div','line small','Raters sometimes chose a <span class="red">convincing yes</span> over a <span class="mint">correct</span> one.');
+     t.style.marginTop='54px'; content.append(t);
+     const c=el('div','cite','<b>Source:</b> Sharma et al., <i>Towards Understanding Sycophancy in Language Models</i>, 2023 (Anthropic; ICLR 2024).');
+     content.append(c);
+     enter(t,easeOut((L2-8.3)/.6)); enter(c,easeOut((L2-9.0)/.6),20);
+     fade([h,row,t,c]);
+   } },
+
+ /* 3 — the fix */
+ () => { const a=el('div','line','The fix isn&rsquo;t a <span class="red">better draft.</span>'),
+               b=el('div','line','It&rsquo;s a question it <span class="gold">can&rsquo;t flatter</span>'),
+               c=el('div','line','its way out of.');
+   content.append(a,b,c); enter(a,lp(.4,.6)); enter(b,lp(3.0,.6)); enter(c,lp(3.6,.6)); fade([a,b,c]); },
+
+ /* 4 — rule one: no yes/no questions */
+ () => { const k=kicker('Rule one &middot; never ask yes or no');
+   const h=el('div','line small','Never ask a <span class="red">yes-or-no</span> question.');
+   h.style.marginBottom='40px'; content.append(h); enter(h,lp(.4,.6));
+   const p1=el('div','prompt warn','<div class="tag">Has a polite answer</div><p><span class="sx">"Is this good?"<i class="strike"></i></span></p>');
+   p1.querySelector('.strike').style.transform=`scaleX(${clamp(lp(6.4,.5))})`;
+   const p2=el('div','prompt','<div class="tag">Has to pick one</div><p>"What is the weakest sentence in this, and why?"</p>');
+   p2.style.marginTop='34px';
+   const w=el('div','why','A ranking question has no polite answer. It has to <b>pick one</b>.');
+   content.append(p1,p2,w);
+   enter(k,lp(.3,.5),22); enter(p1,lp(4.9,.6)); enter(p2,lp(7.4,.7)); enter(w,lp(9.9,.6));
+   const o=outP(); if(o>0){exit(k,o);exit(h,o);exit(p1,o);exit(p2,o);exit(w,o);} },
+
+ /* 5 — rule two: a reader with a reason to say no */
+ () => { const k=kicker('Rule two &middot; a reader with a reason to say no');
+   const h=el('div','line small','A reader with a <span class="gold">reason to say no.</span>');
+   h.style.marginBottom='40px';
+   const p=el('div','prompt','<div class="tag">Say this</div><p>"Read this as the director who has 30 seconds and has already seen ten of these today. Where do they stop reading, and why?"</p>');
+   const w=el('div','why','&ldquo;Be critical&rdquo; is a mood. A named reader with <b>a reason to stop</b> is a standard.');
+   content.append(h,p,w);
+   enter(k,lp(.3,.5),22); enter(h,lp(.4,.6)); enter(p,lp(4.55,.7)); enter(w,lp(10.95,.7));
+   const o=outP(); if(o>0){exit(k,o);exit(h,o);exit(p,o);exit(w,o);} },
+
+ /* 6 — rule three: cap the praise */
+ () => { const k=kicker('Rule three &middot; cap the praise');
+   const h=el('div','line small','Cap the <span class="gold">praise.</span>');
+   h.style.marginBottom='44px'; content.append(h); enter(h,lp(.4,.6));
+   const sc=el('div','score','');
+   for(let i=1;i<=10;i++){ const s=el('div','seg'+(i>7?' no':''),`<i></i><div class="n">${i}</div>`);
+     const f = i<=7 ? clamp(easeOut((LT-3.2-(i-1)*.22)/.35)) : 0;
+     s.querySelector('i').style.height=(f*100)+'%'; sc.append(s); }
+   content.append(sc);
+   const cl=el('div','capline',''); const c0=el('div','cap0','7 / 10 &middot; the ceiling for a first draft'), c1=el('div','cap1','the missing 3 = real problems');
+   c0.style.left='0'; c1.style.right='0'; cl.append(c0,c1); content.append(cl);
+   enter(c0,lp(6.0,.5),16); enter(c1,lp(9.3,.5),16);
+   const p=el('div','prompt','<div class="tag">Say this</div><p>"Score it out of 10. Nothing gets above 7 on a first draft. Tell me what the missing points are for."</p>');
+   p.style.marginTop='44px'; content.append(p); enter(p,lp(7.9,.7));
+   enter(k,lp(.3,.5),22); enter(sc,lp(.6,.5),30);
+   const o=outP(); if(o>0){exit(k,o);exit(h,o);exit(sc,o);exit(cl,o);exit(p,o);} },
+
+ /* 7 — close */
+ () => { const a=el('div','line','Same draft. Same model.'),
+               b=el('div','line','An <span class="gold">editor</span>, not a fan.'),
+               c=el('div','line tiny','Ask for the weakest sentence instead of a compliment.');
+   b.style.marginTop='14px'; c.style.marginTop='40px';
+   content.append(a,b,c); enter(a,lp(.4,.6)); enter(b,lp(6.2,.7)); enter(c,lp(3.0,.7)); },
+];
+
+/* ============================ s3 — the weakest-sentence question ============================ */
+const S3 = [ () => {
+  const a=el('div','line','Never ask AI');
+  const b=el('div','line','&ldquo;<span class="red">is this good?</span>&rdquo;');
+  content.append(a,b); enter(a,lp(.25,.55)); enter(b,lp(.7,.55));
+
+  const ch=el('div','chat',''); ch.style.marginTop='70px';
+  const u=el('div','bub u','Is this good?'), ai=el('div','bub a','');
+  ai.innerHTML = typed('Yes! Great work.', lp(3.3,.8), TU);
+  ch.append(u,ai); content.append(ch); enter(u,lp(2.85,.5),40); enter(ai,lp(3.2,.4),40);
+  const t=el('div','line tiny','Trained on human ratings. People rate a yes higher.');
+  t.style.marginTop='36px'; content.append(t); enter(t,lp(3.9,.6));
+
+  const p=el('div','prompt','<div class="tag">Ask this instead</div><p>"What&rsquo;s the weakest sentence, and why?"</p>');
+  p.style.marginTop='80px'; content.append(p); enter(p,lp(7.6,.7));
+
+  const w=el('div','line small','Now it has to <span class="mint">pick one.</span><br>An <span class="gold">editor</span>, not a fan.');
+  w.style.marginTop='70px'; content.append(w); enter(w,lp(10.85,.7));
+}];
+
+/* ============================ thumbnails (?thumb=1, rendered 1920x1080) ============================ */
+const THUMBS = {
+ b4: () => { const t=el('div','th','');
+   const big=el('div','big','IT&rsquo;S<br><span class="gold">FLATTERING</span><br>YOU');
+   const side=el('div','side',''); const ch=el('div','chat','');
+   const u=el('div','bub u','Is this good?'); const a=el('div','bub a','Yes! Perfect.'+TU+'<div class="cross"></div>');
+   ch.append(u,a); side.append(ch); t.append(big,side); content.append(t); },
+ s3: () => { const t=el('div','th','');
+   const big=el('div','big','ASK<br><span class="gold">THIS</span><br>INSTEAD');
+   const side=el('div','side',''); const ch=el('div','chat','');
+   const u=el('div','bub u','Is this good?'); const a=el('div','bub a','Yes! Perfect.'+TU+'<div class="cross"></div>');
+   ch.append(u,a); side.append(ch); t.append(big,side); content.append(t); },
+};
+
+if (THUMB) THUMBS[V](); else ({b2:B2, b3:B3, s1:S1, s2:S2, b4:B4, s3:S3})[V][IDX]();
 document.title = V + '-' + F;
 </script>
 </body></html>
