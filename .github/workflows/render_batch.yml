@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
     inputs:
       video:
-        description: "Which video to build (b2, b3, s1, s2)"
+        description: "Which video to build (b2, b3, s1, s2, b4, s3)"
         required: true
         type: choice
-        options: [b2, b3, s1, s2]
+        options: [b2, b3, s1, s2, b4, s3]
 
 permissions:
   contents: read
