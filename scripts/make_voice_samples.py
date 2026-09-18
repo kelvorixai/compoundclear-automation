@@ -4,7 +4,7 @@ measured durations to samples/vo_batch.json so each animation can be cut
 to the real voice timings.
 
 Only the videos listed in SCRIPTS are (re)rendered; earlier videos' MP3s in
-samples/ are left untouched. Batch 1 (b2, b3, s1, s2) lives in git history.
+samples/ are left untouched. Earlier batches live in git history.
 """
 import asyncio
 import json
@@ -17,29 +17,30 @@ VOICE = "en-US-AndrewMultilingualNeural"
 RATE = "-4%"
 
 SCRIPTS = {
-    # LONG 4 — why AI flatters you, and the question that makes it honest
-    "b4": [
-        "Paste your draft into AI and ask, is this good? It says yes. Almost every time.",
-        "That isn't your prompt. It's the training. These models learn from millions of human "
-        "ratings, and people rate agreeable answers higher. In 2023, researchers at Anthropic "
-        "tested five leading assistants. All five flattered the user, and raters sometimes "
-        "picked a convincing yes over the correct answer.",
-        "So the fix isn't a better draft. It's a question the model can't flatter its way out of.",
-        "Rule one. Never ask a yes or no question about quality. Is this good, has a polite "
-        "answer. What is the weakest sentence, and why, doesn't. It has to pick one.",
-        "Rule two. Give it a reader with a reason to say no. Read this as the director who has "
-        "thirty seconds and has already seen ten of these today. That reader is looking for a "
-        "reason to stop.",
-        "Rule three. Cap the praise. Score this out of ten, and nothing gets above a seven on a "
-        "first draft. Now it has to spend the missing three points on real problems.",
-        "Same draft. Same model. Ask for the weakest sentence instead of a compliment, and you "
-        "get an editor instead of a fan.",
+    # LONG 5 — why AI misses the middle of a long paste (position effect)
+    "b5": [
+        "You paste a six page report, ask one question, and the answer quietly misses "
+        "the thing on page three.",
+        "This is a measured effect, not bad luck. In a 2023 study, researchers moved the "
+        "same key fact to every position inside one long input. Accuracy was highest at "
+        "the very beginning and at the very end. In the middle, it dropped.",
+        "The curve is a U. Both ends are sharp. The middle sags. And a long document is "
+        "mostly middle.",
+        "So stop opening with your question. Paste the document first, then ask underneath "
+        "it. The last thing it reads is your instruction, and that is the strongest "
+        "position on the page.",
+        "Better, say it twice. One line before the document telling it what to look for, "
+        "and the same line after. Now your ask sits in both of the positions it reads best.",
+        "And make the middle provable. Before it answers, ask it to quote the exact lines "
+        "it used, word for word. If it can't quote them, it didn't read them.",
+        "Same document. Same model. Same question. Move the question to the bottom, ask it "
+        "to quote, and the middle stops disappearing.",
     ],
-    # SHORT 3 — the weakest-sentence question
-    "s3": [
-        "Never ask AI, is this good? It learned from human ratings, and people rate a yes "
-        "higher. Ask: what's the weakest sentence, and why? Now it has to pick one. "
-        "An editor, not a fan.",
+    # SHORT 4 — put the question after the document
+    "s4": [
+        "Your question goes after the document, not before it. Models read the start and "
+        "the end best. The middle sags. So paste it, then ask underneath. The last line it "
+        "reads is the one it follows.",
     ],
 }
 
