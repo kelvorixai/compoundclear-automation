@@ -143,5 +143,90 @@
           "privacy_status": "public",
           "made_for_kids": false
       }
+  },
+  "b5": {
+      "frames": 1836,
+      "size": [
+          1920,
+          1080
+      ],
+      "vo": [
+          [
+              "b5_l1.mp3",
+              600
+          ],
+          [
+              "b5_l2.mp3",
+              8676
+          ],
+          [
+              "b5_l3.mp3",
+              25608
+          ],
+          [
+              "b5_l4.mp3",
+              32820
+          ],
+          [
+              "b5_l5.mp3",
+              44448
+          ],
+          [
+              "b5_l6.mp3",
+              55716
+          ],
+          [
+              "b5_l7.mp3",
+              65712
+          ]
+      ],
+      "youtube": {
+          "id": "kd05_middle_of_document",
+          "title": "Why AI Misses The Middle Of What You Paste",
+          "description": "A long paste gets read best at the start and the end, so your question belongs underneath the document, not above it.\n\nFree: 12 work prompts that actually work (PDF) -> https://kelvorixdigital.lemonsqueezy.com/checkout/buy/2a95cbaf-fd7e-4e28-908e-ccf98199c508?utm_source=youtube&utm_medium=video&utm_campaign=middle-of-document\n\nThe full 63-prompt guide, Prompt Your Way Up ($19) -> https://kelvorixdigital.lemonsqueezy.com/checkout/buy/ffb015dd-7060-4233-b803-63a474a7c426?utm_source=youtube&utm_medium=video&utm_campaign=middle-of-document\n\nCareer guides on Etsy -> https://www.etsy.com/shop/KelvorixDigital\n\n0:00 The problem (and the study behind it)\n0:32 Fix one: the question goes underneath\n0:44 Fix two: say it twice\n0:55 Fix three: make it prove it\n1:05 Move the question to the bottom\n\nSource: Liu et al., \"Lost in the Middle: How Language Models Use Long Contexts\", Transactions of the Association for Computational Linguistics, 2024 (arXiv:2307.03172). Accuracy was highest when the relevant information sat at the beginning or the end of the input context, and degraded significantly when the model had to use information in the middle.\n\nScripts and narration are AI-assisted.\n\n#promptengineering #ai #chatgpt #aiatwork #productivity",
+          "tags": [
+              "prompt engineering",
+              "ai at work",
+              "chatgpt prompts",
+              "claude ai",
+              "long context",
+              "lost in the middle",
+              "ai document summary",
+              "prompt structure",
+              "ai for professionals",
+              "ai productivity"
+          ],
+          "category_id": "27",
+          "privacy_status": "public",
+          "made_for_kids": false
+      }
+  },
+  "s4": {
+      "frames": 360,
+      "size": [
+          1080,
+          1920
+      ],
+      "vo": [
+          [
+              "s4_l1.mp3",
+              600
+          ]
+      ],
+      "youtube": {
+          "id": "kd05s_ask_it_last",
+          "title": "Put Your Question AFTER The Document #shorts",
+          "description": "Models read the start and the end of a long input best, so paste the document first and put the question underneath it.\n\nFree: 12 work prompts that actually work (PDF) -> https://kelvorixdigital.lemonsqueezy.com/checkout/buy/2a95cbaf-fd7e-4e28-908e-ccf98199c508?utm_source=youtube&utm_medium=video&utm_campaign=ask-it-last\n\nThe full 63-prompt guide, Prompt Your Way Up ($19) -> https://kelvorixdigital.lemonsqueezy.com/checkout/buy/ffb015dd-7060-4233-b803-63a474a7c426?utm_source=youtube&utm_medium=video&utm_campaign=ask-it-last\n\nCareer guides on Etsy -> https://www.etsy.com/shop/KelvorixDigital\n\nSource: Liu et al., \"Lost in the Middle: How Language Models Use Long Contexts\", Transactions of the Association for Computational Linguistics, 2024 (arXiv:2307.03172). Accuracy was highest when the relevant information sat at the beginning or the end of the input context, and degraded significantly when the model had to use information in the middle.\n\nScripts and narration are AI-assisted.\n\n#shorts #promptengineering #chatgpt #aiatwork",
+          "tags": [
+              "shorts",
+              "prompt engineering",
+              "chatgpt",
+              "long context",
+              "ai tips"
+          ],
+          "category_id": "27",
+          "privacy_status": "public",
+          "made_for_kids": false
+      }
   }
 }
