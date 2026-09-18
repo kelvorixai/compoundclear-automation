@@ -126,6 +126,46 @@ body.v .bub{font-size:46px;max-width:880px;padding:26px 36px}
 .capline .cap0{position:absolute;font-size:30px;font-weight:700;color:#ffc95c;letter-spacing:.06em;white-space:nowrap}
 .sx{position:relative;display:inline-block}
 .strike{position:absolute;left:-8px;right:-8px;top:50%;height:8px;margin-top:-4px;background:#e0806a;border-radius:4px;transform-origin:left center;box-shadow:0 0 16px rgba(224,128,106,.7)}
+/* ---------- batch 3: the document + the attention curve ---------- */
+.docrow{display:flex;align-items:center;gap:70px}
+.docrow .line{font-size:74px}
+.docrow .line.tiny{font-size:40px}
+.doc{display:flex;flex-direction:column;gap:14px;width:540px;flex:none;
+  background:linear-gradient(180deg,rgba(19,37,66,.92),rgba(10,20,38,.92));
+  border:2px solid #24406c;border-radius:20px;padding:30px 28px;box-shadow:0 26px 60px rgba(0,0,0,.65)}
+body.v .doc{width:100%}
+.pg{display:flex;align-items:center;gap:20px}
+.pg .pn{width:104px;flex:none;font-size:23px;font-weight:700;color:#7f95b8;letter-spacing:.12em;text-transform:uppercase}
+.pg .bx{flex:1;height:52px;border-radius:10px;background:#0a1425;border:2px solid #24406c;position:relative;overflow:hidden}
+.pg .bx i{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#ffd071,#c98a22);box-shadow:0 0 18px rgba(231,181,74,.45)}
+.pg.dim .bx{border-color:#1d3355}
+.pg.dim .pn{color:#4d6285}
+.pg.miss .bx{border-color:#e0806a;border-style:dashed}
+.pg.miss .pn{color:#e0806a}
+.pg .tagm{position:absolute;right:18px;top:50%;transform:translateY(-50%);font-size:21px;font-weight:700;
+  color:#e0806a;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+/* attention curve */
+.curve{position:relative;width:100%;height:404px}
+.curve svg{width:100%;height:100%;overflow:visible}
+.curve .ax{stroke:#24406c;stroke-width:3}
+.curve .ln{fill:none;stroke:#E7B54A;stroke-width:9;stroke-linecap:round;filter:drop-shadow(0 0 18px rgba(231,181,74,.5))}
+.curve .dot{fill:#ffc95c}
+.curve .xl,.curve .yl{font-size:25px;fill:#8ba2c4;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  font-family:'TeX Gyre Heros','Helvetica',sans-serif}
+/* order: wrong vs right */
+.order{display:flex;gap:40px;align-items:flex-start}
+.oc{flex:1;border-radius:20px;padding:28px 30px;border:2px solid #24406c;
+  background:linear-gradient(180deg,#132542,#0c1a30);box-shadow:0 24px 50px rgba(0,0,0,.6)}
+.oc .oh{font-size:23px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;margin-bottom:20px;color:#7f95b8}
+.oc .st{font-family:'DejaVu Sans Mono',monospace;font-size:27px;line-height:1.35;color:#93a9c9;
+  padding:14px 18px;border-radius:10px;background:#0a1425;margin-bottom:12px}
+.oc .st:last-child{margin-bottom:0}
+.oc .st.q{color:#ffc95c;border:2px solid #E7B54A;background:rgba(231,181,74,.07)}
+.oc.bad{border-color:#5c3028}
+.oc.bad .oh{color:#e0806a}
+.oc.bad .st.q{color:#e0806a;border-color:#e0806a;background:rgba(224,128,106,.07)}
+.oc.good{border-color:#E7B54A}
+.oc.good .oh{color:#ffc95c}
 /* thumbnails */
 body.t #content{padding:110px 130px;justify-content:center}
 .th{display:flex;align-items:center;gap:60px}
@@ -174,6 +214,8 @@ const VIDEOS = {
  s2:{vertical:true,  scenes:[[0,15.0]]},
  b4:{vertical:false, scenes:[[0.000,8.058],[8.058,30.180],[30.180,36.846],[36.846,48.336],[48.336,62.106],[62.106,74.532],[74.532,84.628]]},
  s3:{vertical:true,  scenes:[[0,15.0]]},
+ b5:{vertical:false, scenes:[[0.000,8.476],[8.476,25.408],[25.408,32.620],[32.620,44.248],[44.248,55.516],[55.516,65.512],[65.512,76.500]]},
+ s4:{vertical:true,  scenes:[[0,15.0]]},
 };
 const CFG = VIDEOS[V];
 const THUMB = Q.get('thumb') === '1';
@@ -443,6 +485,148 @@ const S3 = [ () => {
   w.style.marginTop='70px'; content.append(w); enter(w,lp(10.85,.7));
 }];
 
+/* ============ b5 — why AI misses the middle of a long paste ============ */
+function docPages(att, opt){
+  const o = opt || {};
+  const d = el('div','doc','');
+  for (let i=0;i<6;i++){
+    const mp = (o.miss === i) ? clamp(o.missP == null ? 1 : o.missP) : 0;
+    const p = el('div','pg' + (mp > .04 ? ' miss' : (att[i] < .4 ? ' dim' : '')),
+                 `<div class="pn">Page ${i+1}</div><div class="bx"><i></i></div>`);
+    const fi = p.querySelector('i');
+    fi.style.width = Math.round(att[i]*100*(o.fill==null?1:clamp(o.fill(i)))*(1-mp)) + '%';
+    if (mp > 0){
+      const t = el('div','tagm', o.missText || 'the answer needed this');
+      t.style.opacity = mp; p.querySelector('.bx').append(t); }
+    if (o.rise) { const g = clamp(o.rise(i)); p.style.opacity = g;
+      p.style.transform = `translateX(${(1-g)*-36}px)`; }
+    d.append(p);
+  }
+  return d;
+}
+
+const B5 = [
+ /* 1 — cold open: six pages in, and it misses one */
+ () => { const row = el('div','docrow','');
+   const d = docPages([.82,.7,.76,.68,.74,.8],
+     {miss:2, missP:lp(5.0,.5), missText:'the answer needed this',
+      rise:i=>lp(.35+i*.16,.45)});
+   const col = el('div'); col.style.flex='1'; col.style.minWidth='0';
+   const a=el('div','line','Six pages in.'),
+         b=el('div','line','One question.'),
+         c=el('div','line','And it misses <span class="red">page three.</span>');
+   c.style.marginTop='20px'; col.append(a,b,c);
+   row.append(d,col); content.append(row);
+   enter(a,lp(.7,.55)); enter(b,lp(2.0,.55)); enter(c,lp(4.3,.6));
+   fade([row]); },
+
+ /* 2 — the measured effect: the U curve */
+ () => { const k = kicker('What the research found');
+   const h = el('div','line small','Same fact. <span class="gold">Moved</span> to every position.');
+   h.style.marginBottom='28px'; h.style.marginTop='90px';
+   content.append(h); enter(h,lp(.4,.6));
+   const wrap = el('div','curve','');
+   wrap.innerHTML = '<svg viewBox="0 0 1000 340">'
+     + '<line class="ax" x1="46" y1="292" x2="962" y2="292"/>'
+     + '<line class="ax" x1="46" y1="16" x2="46" y2="292"/>'
+     + '<path class="ln" d="M 62 54 C 250 66 330 252 500 256 C 670 252 752 66 946 46"/>'
+     + '<circle class="dot" cx="62" cy="54" r="0"/>'
+     + '<circle class="dot" cx="946" cy="46" r="0"/>'
+     + '<circle class="dot" cx="500" cy="256" r="0" style="fill:#e0806a"/>'
+     + '<text class="xl" x="62" y="328" text-anchor="start">start of input</text>'
+     + '<text class="xl" x="500" y="328" text-anchor="middle">middle</text>'
+     + '<text class="xl" x="946" y="328" text-anchor="end">end of input</text>'
+     + '<text class="yl" x="104" y="30">accuracy</text></svg>';
+   content.append(wrap);
+   const path = wrap.querySelector('path.ln'), L = path.getTotalLength();
+   const dp = clamp(easeOut((LT - 2.7)/6.4));
+   path.style.strokeDasharray = L; path.style.strokeDashoffset = L*(1-dp);
+   const dots = wrap.querySelectorAll('circle');
+   dots[0].setAttribute('r', 15*clamp(lp(9.0,.4)));
+   dots[1].setAttribute('r', 15*clamp(lp(11.2,.4)));
+   dots[2].setAttribute('r', 15*clamp(lp(13.4,.4)));
+   enter(wrap,lp(.9,.6),30);
+   const s = el('div','line small','Both ends high. <span class="red">The middle drops.</span>');
+   s.style.marginTop='26px'; content.append(s); enter(s,lp(13.3,.7));
+   const c = el('div','cite','<b>Source:</b> Liu et al., <i>Lost in the Middle: How Language Models Use Long Contexts</i>, TACL 2024.');
+   content.append(c); enter(c,lp(14.5,.6),20);
+   const o = outP(); if(o>0){exit(k,o);exit(h,o);exit(wrap,o);exit(s,o);exit(c,o);} },
+
+ /* 3 — a long document is mostly middle */
+ () => { const row = el('div','docrow','');
+   const att = [1,.26,.15,.15,.3,.95];
+   const d = docPages(att, {rise:i=>lp(.25+i*.11,.4), fill:i=>lp(1.2+i*.09,.5)});
+   const col = el('div'); col.style.flex='1'; col.style.minWidth='0';
+   const a=el('div','line','Both ends <span class="gold">sharp.</span>'),
+         b=el('div','line','The middle <span class="red">sags.</span>'),
+         c=el('div','line tiny','And a long document is mostly middle.');
+   c.style.marginTop='34px'; col.append(a,b,c);
+   row.append(d,col); content.append(row);
+   enter(a,lp(.45,.6)); enter(b,lp(2.0,.6)); enter(c,lp(3.9,.6));
+   fade([row]); },
+
+ /* 4 — fix one: the question goes underneath */
+ () => { const k = kicker('Fix one &middot; ask underneath');
+   const row = el('div','order','');
+   const bad = el('div','oc bad','<div class="oh">What most people do</div>'
+     + '<div class="st q">"Summarise the risks in this:"</div><div class="st">[ six pages ]</div>');
+   const good = el('div','oc good','<div class="oh">Do this instead</div>'
+     + '<div class="st">[ six pages ]</div>'
+     + '<div class="st q">"Now: the three risks, and the paragraph each one is in."</div>');
+   row.append(bad,good); content.append(row);
+   const w = el('div','why','The <b>last thing it reads</b> is the instruction &mdash; and the end of the input is the strongest position on the page.');
+   content.append(w);
+   enter(k,lp(.3,.5),22); enter(bad,lp(.5,.6)); enter(good,lp(4.2,.65)); enter(w,lp(8.4,.7));
+   const o = outP(); if(o>0){exit(k,o);exit(row,o);exit(w,o);} },
+
+ /* 5 — fix two: bracket it, top and bottom */
+ () => { const k = kicker('Fix two &middot; say it twice');
+   const h = el('div','line small','Bracket it. <span class="gold">Top and bottom.</span>');
+   h.style.marginBottom='34px'; content.append(h); enter(h,lp(.4,.6));
+   const p = el('div','prompt','<div class="tag">The shape</div><p>Find every deadline in the document below.<br><br>[ paste the document ]<br><br>Again: list every deadline in the text above, with the line it appears on.</p>');
+   content.append(p); enter(p,lp(1.5,.7));
+   const w = el('div','why','Your ask now sits in <b>both</b> of the positions it reads best. Costs you one line.');
+   content.append(w); enter(w,lp(8.0,.7));
+   const o = outP(); if(o>0){exit(k,o);exit(h,o);exit(p,o);exit(w,o);} },
+
+ /* 6 — fix three: make the middle provable */
+ () => { const k = kicker('Fix three &middot; make it prove it');
+   const p = el('div','prompt','<div class="tag">Add this line</div><p>"Before you answer, quote the exact lines you used, word for word. If something is not in the text, write NOT FOUND."</p>');
+   content.append(p); enter(p,lp(.45,.7));
+   const w = el('div','why','If it <b>can&rsquo;t quote it, it didn&rsquo;t read it</b> &mdash; and you find that out in five seconds instead of in the meeting.');
+   content.append(w); enter(w,lp(5.2,.7));
+   enter(k,lp(.3,.5),22);
+   const o = outP(); if(o>0){exit(k,o);exit(p,o);exit(w,o);} },
+
+ /* 7 — close */
+ () => { const a=el('div','line','Same document.'),
+               b=el('div','line','Move the question to the <span class="gold">bottom.</span>'),
+               c=el('div','line tiny','Then ask it to quote. The middle stops disappearing.');
+   b.style.marginTop='14px'; c.style.marginTop='40px';
+   content.append(a,b,c); enter(a,lp(.4,.6)); enter(b,lp(2.9,.7)); enter(c,lp(6.3,.7)); },
+];
+
+/* ============ s4 — put the question after the document ============ */
+const S4 = [ () => {
+  const a=el('div','line','Your question goes');
+  const b=el('div','line','<span class="gold">after</span> the document.');
+  content.append(a,b); enter(a,lp(.3,.5)); enter(b,lp(1.0,.55));
+
+  const d = docPages([1,.26,.15,.15,.3,.95],
+    {rise:i=>lp(3.9+i*.1,.4), fill:i=>lp(4.3+i*.12,.45)});
+  d.style.marginTop='64px'; content.append(d); enter(d,lp(3.8,.5),30);
+
+  const t=el('div','line tiny','Start and end read best. The middle sags.');
+  t.style.fontSize='46px'; t.style.letterSpacing='-.5px'; t.style.lineHeight='1.25';
+  t.style.marginTop='30px'; content.append(t); enter(t,lp(6.5,.6));
+
+  const p=el('div','prompt','<div class="tag">So paste, then ask</div><p>[ the document ]<br><br>"Now: the three risks, and the paragraph each one is in."</p>');
+  p.style.marginTop='62px'; content.append(p); enter(p,lp(7.8,.7));
+
+  const w=el('div','line small','The <span class="mint">last line</span> it reads<br>is the one it <span class="gold">follows.</span>');
+  w.style.marginTop='62px'; content.append(w); enter(w,lp(10.3,.7));
+}];
+
 /* ============================ thumbnails (?thumb=1, rendered 1920x1080) ============================ */
 const THUMBS = {
  b4: () => { const t=el('div','th','');
@@ -455,9 +639,20 @@ const THUMBS = {
    const side=el('div','side',''); const ch=el('div','chat','');
    const u=el('div','bub u','Is this good?'); const a=el('div','bub a','Yes! Perfect.'+TU+'<div class="cross"></div>');
    ch.append(u,a); side.append(ch); t.append(big,side); content.append(t); },
+ b5: () => { const t=el('div','th','');
+   const big=el('div','big','IT<br><span class="gold">SKIPPED</span><br>THIS');
+   const side=el('div','side','');
+   side.append(docPages([1,.28,.15,.15,.3,.95],
+     {miss:2, missText:'you needed this', missP:1}));
+   t.append(big,side); content.append(t); },
+ s4: () => { const t=el('div','th','');
+   const big=el('div','big','ASK<br><span class="gold">IT</span><br>LAST');
+   const side=el('div','side','');
+   side.append(docPages([1,.28,.15,.15,.3,.95],{}));
+   t.append(big,side); content.append(t); },
 };
 
-if (THUMB) THUMBS[V](); else ({b2:B2, b3:B3, s1:S1, s2:S2, b4:B4, s3:S3})[V][IDX]();
+if (THUMB) THUMBS[V](); else ({b2:B2, b3:B3, s1:S1, s2:S2, b4:B4, s3:S3, b5:B5, s4:S4})[V][IDX]();
 document.title = V + '-' + F;
 </script>
 </body></html>
